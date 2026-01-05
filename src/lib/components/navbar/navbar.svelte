@@ -17,7 +17,7 @@
     <div class="flex items-center gap-3">
       <DarkModeSwitch />
       <Button variant="outline" class="hidden sm:inline-flex">Sign In</Button>
-      <Button class="xs:inline-flex">Get Started</Button>
+      <Button class="xs:inline-flex" href="#pricing">Get Started</Button>
       <div class="md:hidden">
         <NavigationSheet />
       </div>

@@ -65,7 +65,7 @@
 
     <div class="mt-8 space-y-4">
       <Button variant="outline" class="w-full sm:hidden">Sign In</Button>
-      <Button class="w-full xs:hidden">Get Started</Button>
+      <Button class="w-full xs:hidden" href="#pricing">Get Started</Button>
     </div>
   </aside>
 {/if}

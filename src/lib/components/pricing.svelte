@@ -6,48 +6,43 @@
   import { CircleCheck } from "lucide-svelte";
   const plans = [
     {
-      name: "Starter",
-      price: 19,
-      description:
-        "Get 20 AI-generated portraits with 2 unique styles and filters.",
+      name: "Free",
+      price: "$0",
+      description: "Try it, no strings attached.",
       features: [
-        "5 hours turnaround time",
-        "20 AI portraits",
-        "Choice of 2 styles",
-        "Choice of 2 filters",
-        "2 retouch credits",
+        "Limited access to the platform",
+        "SD quality videos",
+        "Watch anywhere you want",
       ],
-      buttonText: "Get 20 portraits in 5 hours",
+      buttonText: "Create a free account",
+      buttonLink: "https://app.mysweetsport.com/signup",
     },
     {
-      name: "Advanced",
-      price: 29,
+      name: "Individual",
+      price: "$9.99/month",
       isRecommended: true,
-      description:
-        "Get 50 AI-generated portraits with 5 unique styles and filters.",
+      description: "Perfect for a single subscriber.",
       features: [
-        "3 hours turnaround time",
-        "50 AI portraits",
-        "Choice of 5 styles",
-        "Choice of 5 filters",
-        "5 retouch credits",
+        "Full access to the platform",
+        "High-quality videos",
+        "Watch anywhere you want",
       ],
-      buttonText: "Get 50 portraits in 3 hours",
+      buttonText: "Get started",
+      buttonLink: "https://app.mysweetsport.com/signup?plan=individual-monthly",
       isPopular: true,
     },
     {
-      name: "Premium",
-      price: 49,
-      description:
-        "Get 100 AI-generated portraits with 10 unique styles and filters.",
+      name: "Teams",
+      price: "Custom",
+      description: "Perfect for teams.",
       features: [
-        "1-hour turnaround time",
-        "100 AI portraits",
-        "Choice of 10 styles",
-        "Choice of 10 filters",
-        "10 retouch credits",
+        "All features in Individual",
+        "Access for the whole team",
+        "Customized payment options",
       ],
-      buttonText: "Get 100 portraits in 1 hour",
+      buttonText: "Talk to sales",
+      buttonLink:
+        "https://cal.com/mysweetsport/quick-45-minutes-demo?user=mysweetsport",
     },
   ];
 </script>
@@ -77,7 +72,7 @@
           </Badge>
         {/if}
         <h3 class="text-lg font-medium">{plan.name}</h3>
-        <p class="mt-2 text-4xl font-bold">${plan.price}</p>
+        <p class="mt-2 text-4xl font-bold">{plan.price}</p>
         <p class="mt-4 font-medium text-muted-foreground">
           {plan.description}
         </p>
@@ -93,7 +88,8 @@
         <Button
           variant={plan.isPopular ? "default" : "outline"}
           size="lg"
-          class="w-full mt-6 rounded-full"
+          class="w-full mt-6 "
+          href={plan.buttonLink}
         >
           {plan.buttonText}
         </Button>
