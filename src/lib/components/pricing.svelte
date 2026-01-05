@@ -3,7 +3,7 @@
   import { Button } from "$lib/components/ui/button/index.js";
   import { Separator } from "$lib/components/ui/separator/index.js";
   import { cn } from "$lib/utils";
-  import { CircleCheck } from "@lucide/svelte";
+  import { CircleCheck } from "lucide-svelte";
   const plans = [
     {
       name: "Starter",
@@ -64,12 +64,15 @@
         class={cn(
           "relative bg-accent/50 border p-7 rounded-xl lg:rounded-none lg:first:rounded-l-xl lg:last:rounded-r-xl",
           {
-            "bg-background border-[2px] border-primary py-12 rounded-xl!": plan.isPopular,
+            "bg-background border-[2px] border-primary py-12 rounded-xl!":
+              plan.isPopular,
           }
         )}
       >
         {#if plan.isPopular}
-          <Badge class="absolute top-0 right-1/2 translate-x-1/2 -translate-y-1/2">
+          <Badge
+            class="absolute top-0 right-1/2 translate-x-1/2 -translate-y-1/2"
+          >
             Most Popular
           </Badge>
         {/if}
@@ -87,7 +90,11 @@
             </li>
           {/each}
         </ul>
-        <Button variant={plan.isPopular ? "default" : "outline"} size="lg" class="w-full mt-6 rounded-full">
+        <Button
+          variant={plan.isPopular ? "default" : "outline"}
+          size="lg"
+          class="w-full mt-6 rounded-full"
+        >
           {plan.buttonText}
         </Button>
       </div>

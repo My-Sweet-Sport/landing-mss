@@ -11,7 +11,7 @@
     Goal,
     Users,
     Zap,
-  } from "@lucide/svelte";
+  } from "lucide-svelte";
   import type { ComponentType } from "svelte";
 
   type Feature = {

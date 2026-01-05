@@ -67,8 +67,9 @@
               )}
             >
               <span>{question}</span>
+              <!-- TODO: The plus icon here is not visible. If I put it before the span, it's visible -->
               <Plus
-                class="h-5 w-5 shrink-0 transition-transform duration-200"
+                class="h-5 w-5 shrink-0 transition-transform duration-200 "
               />
             </AccordionPrimitive.Trigger>
           </AccordionPrimitive.Header>

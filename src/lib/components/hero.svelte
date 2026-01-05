@@ -1,7 +1,7 @@
 <script lang="ts">
   import { Badge } from "$lib/components/ui/badge";
   import { Button } from "$lib/components/ui/button";
-  import { ArrowUpRight, CirclePlay } from "@lucide/svelte";
+  import { ArrowUpRight, CirclePlay } from "lucide-svelte";
   import { buttonVariants } from "$lib/components/ui/button";
 </script>
 

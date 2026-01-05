@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Star } from "@lucide/svelte";
+  import { Star } from "lucide-svelte";
 
   type Testimonial = {
     id: number;
@@ -77,8 +77,13 @@
   $: trackTransform = `translateX(-${current * 100}%)`;
 </script>
 
-<div id="testimonials" class="w-full max-w-(--breakpoint-xl) mx-auto py-6 xs:py-12 px-6">
-  <h2 class="mb-8 xs:mb-14 text-4xl md:text-5xl font-bold text-center tracking-tight">
+<div
+  id="testimonials"
+  class="w-full max-w-(--breakpoint-xl) mx-auto py-6 xs:py-12 px-6"
+>
+  <h2
+    class="mb-8 xs:mb-14 text-4xl md:text-5xl font-bold text-center tracking-tight"
+  >
     Testimonials
   </h2>
   <div class="container w-full mx-auto">
@@ -91,10 +96,18 @@
           <div class="w-full shrink-0">
             <div class="mb-8 bg-accent rounded-xl py-8 px-6 sm:py-6">
               <div class="flex items-center justify-between gap-20">
-                <div class="hidden lg:block relative shrink-0 aspect-[3/4] max-w-[18rem] w-full bg-muted-foreground/20 rounded-xl">
-                  <img src="/placeholder.svg" alt="" class="absolute inset-0 size-full object-cover rounded-xl" />
+                <div
+                  class="hidden lg:block relative shrink-0 aspect-[3/4] max-w-[18rem] w-full bg-muted-foreground/20 rounded-xl"
+                >
+                  <img
+                    src="/placeholder.svg"
+                    alt=""
+                    class="absolute inset-0 size-full object-cover rounded-xl"
+                  />
 
-                  <div class="absolute top-1/4 right-0 translate-x-1/2 h-12 w-12 bg-primary rounded-full flex items-center justify-center">
+                  <div
+                    class="absolute top-1/4 right-0 translate-x-1/2 h-12 w-12 bg-primary rounded-full flex items-center justify-center"
+                  >
                     <svg
                       width="102"
                       height="102"
@@ -113,30 +126,43 @@
                 <div class="flex flex-col justify-center">
                   <div class="flex items-center justify-between gap-1">
                     <div class="hidden sm:flex md:hidden items-center gap-4">
-                      <div class="w-8 h-8 md:w-10 md:h-10 rounded-full bg-primary text-primary-foreground flex items-center justify-center text-xl font-medium">
+                      <div
+                        class="w-8 h-8 md:w-10 md:h-10 rounded-full bg-primary text-primary-foreground flex items-center justify-center text-xl font-medium"
+                      >
                         {testimonial.name.charAt(0)}
                       </div>
                       <div>
                         <p class="text-lg font-semibold">{testimonial.name}</p>
-                        <p class="text-sm text-gray-500">{testimonial.designation}</p>
+                        <p class="text-sm text-gray-500">
+                          {testimonial.designation}
+                        </p>
                       </div>
                     </div>
                     <div class="flex items-center gap-1">
                       {#each Array.from({ length: 5 }) as _, starIndex}
-                        <Star class="w-5 h-5 fill-muted-foreground stroke-muted-foreground" aria-hidden="true" />
+                        <Star
+                          class="w-5 h-5 fill-muted-foreground stroke-muted-foreground"
+                          aria-hidden="true"
+                        />
                       {/each}
                     </div>
                   </div>
-                  <p class="mt-6 text-lg sm:text-2xl lg:text-[1.75rem] xl:text-3xl leading-normal lg:leading-normal! font-semibold tracking-tight">
+                  <p
+                    class="mt-6 text-lg sm:text-2xl lg:text-[1.75rem] xl:text-3xl leading-normal lg:leading-normal! font-semibold tracking-tight"
+                  >
                     "{testimonial.testimonial}"
                   </p>
                   <div class="flex sm:hidden md:flex mt-6 items-center gap-4">
-                    <div class="w-10 h-10 rounded-full bg-primary text-primary-foreground flex items-center justify-center text-xl font-medium">
+                    <div
+                      class="w-10 h-10 rounded-full bg-primary text-primary-foreground flex items-center justify-center text-xl font-medium"
+                    >
                       {testimonial.name.charAt(0)}
                     </div>
                     <div>
                       <p class="text-lg font-semibold">{testimonial.name}</p>
-                      <p class="text-sm text-gray-500">{testimonial.designation}</p>
+                      <p class="text-sm text-gray-500">
+                        {testimonial.designation}
+                      </p>
                     </div>
                   </div>
                 </div>
