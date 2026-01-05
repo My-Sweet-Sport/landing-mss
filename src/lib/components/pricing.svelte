@@ -59,44 +59,38 @@
   <div
     class="mt-8 xs:mt-14 grid grid-cols-1 lg:grid-cols-3 items-center gap-8 lg:gap-0"
   >
-    <!-- {plans.map((plan) => (
-        <div
-        key={plan.name}
+    {#each plans as plan (plan.name)}
+      <div
         class={cn(
-            "relative bg-accent/50 border p-7 rounded-xl lg:rounded-none lg:first:rounded-l-xl lg:last:rounded-r-xl",
-            {
-            "bg-background border-[2px] border-primary py-12 rounded-xl!":
-                plan.isPopular,
-            }
+          "relative bg-accent/50 border p-7 rounded-xl lg:rounded-none lg:first:rounded-l-xl lg:last:rounded-r-xl",
+          {
+            "bg-background border-[2px] border-primary py-12 rounded-xl!": plan.isPopular,
+          }
         )}
-        >
-        {plan.isPopular && (
-            <Badge class="absolute top-0 right-1/2 translate-x-1/2 -translate-y-1/2">
+      >
+        {#if plan.isPopular}
+          <Badge class="absolute top-0 right-1/2 translate-x-1/2 -translate-y-1/2">
             Most Popular
-            </Badge>
-        )}
+          </Badge>
+        {/if}
         <h3 class="text-lg font-medium">{plan.name}</h3>
         <p class="mt-2 text-4xl font-bold">${plan.price}</p>
         <p class="mt-4 font-medium text-muted-foreground">
-            {plan.description}
+          {plan.description}
         </p>
         <Separator class="my-6" />
         <ul class="space-y-2">
-            {plan.features.map((feature) => (
-            <li key={feature} class="flex items-start gap-2">
-                <CircleCheck class="h-4 w-4 mt-1 text-green-600" />
-                {feature}
+          {#each plan.features as feature (feature)}
+            <li class="flex items-start gap-2">
+              <CircleCheck class="h-4 w-4 mt-1 text-green-600" />
+              {feature}
             </li>
-            ))}
+          {/each}
         </ul>
-        <Button
-            variant={plan.isPopular ? "default" : "outline"}
-            size="lg"
-            class="w-full mt-6 rounded-full"
-        >
-            {plan.buttonText}
+        <Button variant={plan.isPopular ? "default" : "outline"} size="lg" class="w-full mt-6 rounded-full">
+          {plan.buttonText}
         </Button>
-        </div>
-    ))} -->
+      </div>
+    {/each}
   </div>
 </div>
