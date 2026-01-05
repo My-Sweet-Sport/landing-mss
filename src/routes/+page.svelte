@@ -5,11 +5,13 @@
   import Features from "$lib/components/features.svelte";
   import Footer from "$lib/components/footer.svelte";
   import Hero from "$lib/components/hero.svelte";
+  import Testimonial from "$lib/components/testimonials.svelte";
 </script>
 
 <Hero />
 <Features />
 <FAQ />
+<Testimonial />
 <Pricing />
 <Footer />
 
