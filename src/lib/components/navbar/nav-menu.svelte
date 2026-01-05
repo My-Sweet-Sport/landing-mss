@@ -22,10 +22,14 @@
 </script>
 
 <NavigationMenuRoot class={cn(className)} {...restProps}>
-  <NavigationMenuList class="gap-6 space-x-0 data-[orientation=vertical]:flex-col data-[orientation=vertical]:items-start">
+  <NavigationMenuList
+    class="gap-6 space-x-0 data-[orientation=vertical]:flex-col data-[orientation=vertical]:items-start"
+  >
     {#each links as link}
       <NavigationMenuItem>
-        <NavigationMenuLink href={link.href}>{link.label}</NavigationMenuLink>
+        <NavigationMenuLink class=" !text-base" href={link.href}
+          >{link.label}</NavigationMenuLink
+        >
       </NavigationMenuItem>
     {/each}
   </NavigationMenuList>

@@ -62,12 +62,11 @@
           <AccordionPrimitive.Header class="flex">
             <AccordionPrimitive.Trigger
               class={cn(
-                "flex flex-1 items-center justify-between py-4 font-semibold tracking-tight transition-all hover:underline [&[data-state=open]>svg]:rotate-45 [&>svg:last-child]:hidden",
+                "flex flex-1 items-center justify-between py-4 font-semibold tracking-tight transition-all hover:underline [&[data-state=open]>svg]:rotate-45",
                 "text-start text-lg"
               )}
             >
               <span>{question}</span>
-              <!-- TODO: The plus icon here is not visible. If I put it before the span, it's visible -->
               <Plus
                 class="h-5 w-5 shrink-0 transition-transform duration-200 "
               />
