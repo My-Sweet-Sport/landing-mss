@@ -16,13 +16,24 @@
       <h1
         class="mt-6 max-w-[20ch] text-3xl xs:text-4xl sm:text-5xl lg:text-[2.75rem] xl:text-5xl font-bold leading-[1.2]! tracking-tight"
       >
-        Customized Shadcn UI Blocks & Components
+        <span>Train</span>
+        <span
+          class="block w-full bg-linear-to-r from-[#18CF48] to-[#60efff] bg-clip-text py-2 leading-12 text-transparent lg:inline"
+          >your brain</span
+        > <span>around <br />your sport</span>
       </h1>
       <p class="mt-6 max-w-[60ch] xs:text-lg">
-        Explore a collection of Shadcn UI blocks and components, ready to
-        preview and copy. Streamline your development workflow with
-        easy-to-implement examples.
+        Start making better decisions, without leaving your couch.
       </p>
+      <!-- <h1
+        class="mt-6 max-w-[20ch] text-3xl xs:text-4xl sm:text-5xl lg:text-[2.75rem] xl:text-5xl font-bold leading-[1.2]! tracking-tight"
+      >
+        Train your brain around your sport
+      </h1>
+
+      <p class="mt-6 max-w-[60ch] xs:text-lg">
+        Start making better decisions, without leaving your couch.
+      </p> -->
       <div class="mt-12 flex flex-col sm:flex-row items-center gap-4">
         <Button size="lg" class="w-full sm:w-auto text-base" href="#pricing">
           Get Started <ArrowUpRight class="h-5! w-5!" />

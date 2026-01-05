@@ -179,7 +179,7 @@
           aria-label={`Go to slide ${index + 1}`}
           on:click={() => setSlide(index)}
           class={`h-3.5 w-3.5 rounded-full border-2 transition-colors ${current === index ? "bg-primary border-primary" : "border-border"}`}
-        />
+        ></button>
       {/each}
     </div>
   </div>
