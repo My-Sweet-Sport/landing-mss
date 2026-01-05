@@ -2,7 +2,7 @@
   import * as Accordion from "$lib/components/ui/accordion/index.js";
   import { Accordion as AccordionPrimitive } from "bits-ui";
   import { cn } from "$lib/utils";
-  import { PlusIcon } from "@lucide/svelte";
+  import { Plus } from "lucide-svelte";
 
   const faq = [
     {
@@ -67,8 +67,8 @@
               )}
             >
               <span>{question}</span>
-              <PlusIcon
-                class="h-5 w-5 shrink-0 text-muted-foreground transition-transform duration-200"
+              <Plus
+                class="h-5 w-5 shrink-0 transition-transform duration-200"
               />
             </AccordionPrimitive.Trigger>
           </AccordionPrimitive.Header>
