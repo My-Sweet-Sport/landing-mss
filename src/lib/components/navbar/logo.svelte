@@ -1,7 +1,7 @@
 <script lang="ts">
   import { browser } from "$app/environment";
-  import { mode, modeStorageKey } from "mode-watcher";
-  import { onMount } from "svelte";
+  import { base } from "$app/paths";
+  import { mode } from "mode-watcher";
 
   type LogoProps = {
     class?: string;
@@ -14,7 +14,7 @@
   <img
     width="124"
     height="32"
-    src="/logo.png"
+    src={`${base}/logo.png`}
     alt="My Sweet Sport"
     class={className}
   />
@@ -22,7 +22,7 @@
   <img
     width="124"
     height="32"
-    src="/logo-light.png"
+    src={`${base}/logo-light.png`}
     alt="My Sweet Sport"
     class={className}
   />

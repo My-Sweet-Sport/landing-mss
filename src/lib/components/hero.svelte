@@ -1,8 +1,8 @@
 <script lang="ts">
+  import { base } from "$app/paths";
   import { Badge } from "$lib/components/ui/badge";
-  import { Button } from "$lib/components/ui/button";
+  import { Button, buttonVariants } from "$lib/components/ui/button";
   import { ArrowUpRight, CirclePlay } from "lucide-svelte";
-  import { buttonVariants } from "$lib/components/ui/button";
 </script>
 
 <div
@@ -53,7 +53,7 @@
       class="relative lg:max-w-lg xl:max-w-xl w-full bg-accent rounded-xl aspect-square"
     >
       <img
-        src="/hero.png"
+        src={`${base}/hero.png`}
         alt=""
         class="absolute inset-0 size-full object-cover rounded-xl border-muted border"
       />
