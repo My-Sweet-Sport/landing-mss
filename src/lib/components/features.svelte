@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { base } from "$app/paths";
   import {
     Card,
     CardContent,
@@ -18,44 +19,50 @@
     icon: ComponentType;
     title: string;
     description: string;
+    screenshotUrl?: string;
   };
-
   const features: Feature[] = [
     {
       icon: Goal,
-      title: "Identify Opportunities",
+      title: "Improve Decisions",
+      screenshotUrl: `${base}/questionnaire.jpeg`,
       description:
-        "Easily uncover untapped areas to explore and expand your reach effortlessly.",
+        "Digest community performance signals, AI scouting tips, and merch demand data to pick the next best move with confidence.",
     },
     {
       icon: BookCheck,
-      title: "Build Authority",
+      title: "New Videos Everyday",
+      screenshotUrl: `${base}/videos.png`,
       description:
-        "Create valuable content that resonates, inspires trust, and positions you as an expert.",
+        "Feed your academy with daily AI-edited drills, film rooms, and highlight reels pulled straight from MySweetSport activity.",
     },
     {
       icon: ChartPie,
-      title: "Instant Insights",
+      title: "Performance Tracking",
+      screenshotUrl: `${base}/dashboard.png`,
       description:
-        "Gain immediate, actionable insights with a quick glance, enabling fast decision-making.",
+        "Visualize streaks, session quality, and shop conversions in one pulse so you never miss a surge or slowdown.",
     },
     {
       icon: Users,
-      title: "Engage with Your Audience",
+      title: "Training For The Whole Team",
+      screenshotUrl: `${base}/team.png`,
       description:
-        "Boost audience engagement with interactive features like polls, quizzes, and forms.",
+        "Generate personalized tracks for coaches, captains, and superfans so every role gets the exact reps they need.",
     },
     {
       icon: FolderSync,
-      title: "Automate Your Workflow",
+      title: "Custom Videos",
+      screenshotUrl: `${base}/customVideos.png`,
       description:
-        "Streamline your processes by automating repetitive tasks, saving time and reducing effort.",
+        "Transform any upload or live session into branded, platform-ready clips with automated lower thirds and CTAs.",
     },
     {
       icon: Zap,
-      title: "Accelerate Growth",
+      title: "Quick 5-min Sessions",
+      screenshotUrl: `${base}/5min.jpeg`,
       description:
-        "Supercharge your growth by implementing strategies that drive results quickly and efficiently.",
+        "Spin up bite-sized workouts or briefing modules in minutes, optimized for the MySweetSport mobile flow.",
     },
   ];
 </script>
@@ -84,8 +91,13 @@
           </p>
         </CardHeader>
         <CardContent class="mt-auto px-0 pb-0">
-          <!-- TODO: Insert application screenshots here -->
-          <div class="bg-muted h-52 ml-6 rounded-tl-xl"></div>
+          {#if feature.screenshotUrl}
+            <img
+              src={feature.screenshotUrl}
+              alt={feature.title}
+              class="bg-muted h-52 ml-6 rounded-tl-xl"
+            />
+          {/if}
         </CardContent>
       </Card>
     {/each}
