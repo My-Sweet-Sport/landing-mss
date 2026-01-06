@@ -1,9 +1,9 @@
 <script lang="ts">
   import {
-    Root as NavigationMenuRoot,
     Item as NavigationMenuItem,
     Link as NavigationMenuLink,
     List as NavigationMenuList,
+    Root as NavigationMenuRoot,
   } from "$lib/components/ui/navigation-menu/index.js";
   import { cn } from "$lib/utils.js";
   import type { NavigationMenu as NavigationMenuPrimitive } from "bits-ui";
@@ -11,7 +11,7 @@
   type NavMenuProps = Omit<NavigationMenuPrimitive.RootProps, "children">;
 
   const links = [
-    { href: "/", label: "Home" },
+    { href: ".", label: "Home" },
     { href: "#features", label: "Features" },
     { href: "#faq", label: "FAQ" },
     { href: "#testimonials", label: "Testimonials" },
