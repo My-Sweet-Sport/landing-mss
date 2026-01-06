@@ -13,19 +13,19 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Install Deno
-        uses: denoland/setup-deno@v2
+      - name: Install Node.js
+        uses: actions/setup-node@v4
         with:
-          deno-version: v2.x
-          cache: true
+          node-version: 23
+          cache: npm
 
       - name: Install dependencies
-        run: deno install
+        run: npm i
 
       - name: build
         env:
           BASE_PATH: "/${{ github.event.repository.name }}"
-        run: deno run build
+        run: npm run build
 
       - name: Upload Artifacts
         uses: actions/upload-pages-artifact@v3
