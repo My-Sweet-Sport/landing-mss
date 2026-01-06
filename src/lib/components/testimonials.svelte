@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { base } from "$app/paths";
   import { Star } from "lucide-svelte";
 
   type Testimonial = {
@@ -100,7 +101,7 @@
                   class="hidden lg:block relative shrink-0 aspect-[3/4] max-w-[18rem] w-full bg-muted-foreground/20 rounded-xl"
                 >
                   <img
-                    src="/placeholder.svg"
+                    src={`${base}/placeholder.svg`}
                     alt=""
                     class="absolute inset-0 size-full object-cover rounded-xl"
                   />
