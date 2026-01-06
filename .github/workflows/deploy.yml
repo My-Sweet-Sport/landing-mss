@@ -25,12 +25,12 @@ jobs:
           cache: true
 
       - name: Install dependencies
-        run: deno install
+        run: npm i
 
       - name: build
         env:
           BASE_PATH: "/${{ github.event.repository.name }}"
-        run: deno run build
+        run: npm run build
 
       - name: Upload Artifacts
         uses: actions/upload-pages-artifact@v3
