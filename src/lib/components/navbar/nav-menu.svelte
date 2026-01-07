@@ -16,6 +16,8 @@
     { href: "#faq", label: "FAQ" },
     { href: "#testimonials", label: "Testimonials" },
     { href: "#pricing", label: "Pricing" },
+    { href: "https://app.mysweetsport.com/showcase", label: "Showcase" },
+    { href: "https://app.mysweetsport.com/myiq", label: "myIQ" },
   ];
 
   let { class: className, ...restProps }: NavMenuProps = $props();
