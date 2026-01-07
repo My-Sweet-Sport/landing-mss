@@ -101,7 +101,7 @@
             <img
               src={feature.screenshotUrl}
               alt={feature.title}
-              class="bg-muted h-52 ml-6 rounded-tl-xl aspect-video"
+              class=" h-52 ml-6 rounded-tl-xl aspect-video"
             />
           {/if}
         </CardContent>
@@ -119,11 +119,7 @@
         rgba(148, 163, 184, 0.2) 1px,
         transparent 0
       ),
-      linear-gradient(
-        90deg,
-        rgba(148, 163, 184, 0.2) 1px,
-        transparent 0
-      );
+      linear-gradient(90deg, rgba(148, 163, 184, 0.2) 1px, transparent 0);
     background-size: 56px 56px;
     animation: feature-grid-pan 18s linear infinite;
     opacity: 0;
