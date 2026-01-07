@@ -62,7 +62,7 @@
       title: "Quick 5-min Sessions",
       screenshotUrl: `${base}/5min.jpeg`,
       description:
-        "Spin up bite-sized workouts or briefing modules in minutes, optimized for the MySweetSport mobile flow.",
+        "Spin up bite-sized workouts in minutes, optimized for the MySweetSport mobile flow.",
     },
   ];
 </script>
