@@ -10,7 +10,7 @@
   import Navbar from "$lib/components/navbar/navbar.svelte";
 </script>
 
-<svelte:head><link rel="icon" href={`${base}/favicon-2.ico`} /></svelte:head>
+<svelte:head><link rel="icon" href={`${base}/favicon-v2.ico`} /></svelte:head>
 <ModeWatcher defaultMode={"system"} />
 <Navbar />
 {@render children()}
