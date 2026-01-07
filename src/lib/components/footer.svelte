@@ -9,7 +9,7 @@
       title: "Product",
       links: [
         { title: "Overview", href: "#" },
-        { title: "Features", href: "#" },
+        { title: "Features", href: "./#features" },
         { title: "Solutions", href: "#" },
         { title: "Tutorials", href: "#" },
         { title: "Pricing", href: "#" },
@@ -20,21 +20,15 @@
       title: "Company",
       links: [
         { title: "About us", href: "#" },
-        { title: "Careers", href: "#" },
-        { title: "Press", href: "#" },
-        { title: "News", href: "#" },
-        { title: "Media kit", href: "#" },
+
         { title: "Contact", href: "#" },
       ],
     },
     {
       title: "Resources",
       links: [
-        { title: "Blog", href: "#" },
-        { title: "Newsletter", href: "#" },
-        { title: "Events", href: "#" },
         { title: "Help centre", href: "#" },
-        { title: "Tutorials", href: "#" },
+
         { title: "Support", href: "#" },
       ],
     },
@@ -45,18 +39,16 @@
         { title: "LinkedIn", href: "#" },
         { title: "Facebook", href: "#" },
         { title: "GitHub", href: "#" },
-        { title: "AngelList", href: "#" },
-        { title: "Dribbble", href: "#" },
       ],
     },
     {
       title: "Legal",
       links: [
-        { title: "Terms", href: "#" },
+        /* { title: "Terms", href: "#" }, */
         { title: "Privacy", href: "/privacy" },
-        { title: "Cookies", href: "#" },
+        /* { title: "Cookies", href: "#" },
         { title: "Licenses", href: "#" },
-        { title: "Settings", href: "#" },
+        { title: "Settings", href: "#" }, */
         { title: "Contact", href: "#" },
       ],
     },
