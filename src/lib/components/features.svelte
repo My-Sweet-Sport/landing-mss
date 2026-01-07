@@ -80,9 +80,15 @@
     class="mt-8 xs:mt-14 w-full mx-auto grid md:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-12"
   >
     {#each features as feature (feature.title)}
-      <Card class="flex flex-col border rounded-xl overflow-hidden shadow-none">
-        <CardHeader>
-          <svelte:component this={feature.icon} />
+      <Card
+        class="feature-card group relative flex flex-col border rounded-xl overflow-hidden shadow-none"
+      >
+        <div class="feature-card-grid" aria-hidden="true" />
+        <CardHeader class="relative z-10">
+          <svelte:component
+            this={feature.icon}
+            class="feature-card-icon text-muted-foreground transition-colors duration-200 group-hover:text-primary"
+          />
           <h4 class="mt-3 text-xl font-bold tracking-tight">
             {feature.title}
           </h4>
@@ -90,7 +96,7 @@
             {feature.description}
           </p>
         </CardHeader>
-        <CardContent class="mt-auto px-0 pb-0">
+        <CardContent class="relative z-10 mt-auto px-0 pb-0">
           {#if feature.screenshotUrl}
             <img
               src={feature.screenshotUrl}
@@ -103,3 +109,44 @@
     {/each}
   </div>
 </section>
+
+<style>
+  :global(.feature-card-grid) {
+    position: absolute;
+    inset: 0;
+    background-image: linear-gradient(
+        0deg,
+        rgba(148, 163, 184, 0.2) 1px,
+        transparent 0
+      ),
+      linear-gradient(
+        90deg,
+        rgba(148, 163, 184, 0.2) 1px,
+        transparent 0
+      );
+    background-size: 56px 56px;
+    animation: feature-grid-pan 18s linear infinite;
+    opacity: 0;
+    pointer-events: none;
+    z-index: 0;
+    transition: opacity 0.2s ease;
+    mask-image: radial-gradient(
+      ellipse at center,
+      rgba(0, 0, 0, 1) 45%,
+      rgba(0, 0, 0, 0) 90%
+    );
+  }
+
+  :global(.feature-card:hover .feature-card-grid) {
+    opacity: 0.6;
+  }
+
+  @keyframes feature-grid-pan {
+    from {
+      transform: translate3d(0, 0, 0);
+    }
+    to {
+      transform: translate3d(-28px, -28px, 0);
+    }
+  }
+</style>
