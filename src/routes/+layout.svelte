@@ -1,11 +1,12 @@
 <script lang="ts">
-  import favicon from "$lib/assets/favicon.svg";
-  import "./layout.css";
+  import { base } from "$app/paths";
   import { ModeWatcher } from "mode-watcher";
   let { children } = $props();
+
+  import "./layout.css";
 </script>
 
-<svelte:head><link rel="icon" href={favicon} /></svelte:head>
+<svelte:head><link rel="icon" href={`${base}/favicon-2.ico`} /></svelte:head>
 <ModeWatcher defaultMode={"dark"} />
 
 {@render children()}
