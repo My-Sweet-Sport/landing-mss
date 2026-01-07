@@ -2,6 +2,7 @@
   import { base } from "$app/paths";
   import { Badge } from "$lib/components/ui/badge";
   import { Button, buttonVariants } from "$lib/components/ui/button";
+  import * as Dialog from "$lib/components/ui/dialog/index.js";
   import { ArrowUpRight, CirclePlay } from "lucide-svelte";
 </script>
 
@@ -39,14 +40,31 @@
           Get Started <ArrowUpRight class="h-5! w-5!" />
         </Button>
 
-        <Button
-          variant="outline"
-          size="lg"
-          class="w-full sm:w-auto text-base shadow-none"
-          href="https://qqvteqmiccdgbetvcggd.supabase.co/storage/v1/object/public/public/MSS-Demo-with-music.mp4"
-        >
-          <CirclePlay class="h-5! w-5!" /> Watch Demo
-        </Button>
+        <!-- TODO: When a user click on Watch Demo button, it should open a modal with the demo video -->
+        <Dialog.Root>
+          <Dialog.Trigger
+            ><Button
+              variant="outline"
+              size="lg"
+              class="w-full sm:w-auto text-base shadow-none"
+            >
+              <CirclePlay class="h-5! w-5!" /> Watch Demo
+            </Button></Dialog.Trigger
+          >
+          <Dialog.Content>
+            <Dialog.Header>
+              <Dialog.Title>Are you sure absolutely sure?</Dialog.Title>
+              <Dialog.Description>
+                <video
+                  src="https://qqvteqmiccdgbetvcggd.supabase.co/storage/v1/object/public/public/MSS-Demo-with-music.mp4"
+                  controls
+                  autoplay
+                  class="w-full rounded-md"
+                ></video>
+              </Dialog.Description>
+            </Dialog.Header>
+          </Dialog.Content>
+        </Dialog.Root>
       </div>
     </div>
     <div

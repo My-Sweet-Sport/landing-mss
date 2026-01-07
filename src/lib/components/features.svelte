@@ -39,14 +39,14 @@
     {
       icon: ChartPie,
       title: "Performance Tracking",
-      screenshotUrl: `${base}/dashboard.png`,
+      screenshotUrl: `${base}/personalDashboard.png`,
       description:
         "Visualize streaks, session quality, and shop conversions in one pulse so you never miss a surge or slowdown.",
     },
     {
       icon: Users,
       title: "Training For The Whole Team",
-      screenshotUrl: `${base}/team.png`,
+      screenshotUrl: `${base}/dashboard.png`,
       description:
         "Generate personalized tracks for coaches, captains, and superfans so every role gets the exact reps they need.",
     },
@@ -95,7 +95,7 @@
             <img
               src={feature.screenshotUrl}
               alt={feature.title}
-              class="bg-muted h-52 ml-6 rounded-tl-xl"
+              class="bg-muted h-52 ml-6 rounded-tl-xl aspect-video"
             />
           {/if}
         </CardContent>
