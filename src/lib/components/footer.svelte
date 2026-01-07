@@ -39,7 +39,7 @@
       title: "Legal",
       links: [
         /* { title: "Terms", href: "#" }, */
-        { title: "Privacy", href: "/privacy" },
+        { title: "Privacy", href: "./privacy" },
         /* { title: "Cookies", href: "#" },
         { title: "Licenses", href: "#" },
         { title: "Settings", href: "#" }, */
