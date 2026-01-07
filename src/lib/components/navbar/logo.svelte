@@ -10,20 +10,22 @@
   let { class: className }: LogoProps = $props();
 </script>
 
-{#if browser && mode.current === "dark"}
-  <img
-    width="124"
-    height="32"
-    src={`${base}/logo.png`}
-    alt="My Sweet Sport"
-    class={className}
-  />
-{:else}
-  <img
-    width="124"
-    height="32"
-    src={`${base}/logo-light.png`}
-    alt="My Sweet Sport"
-    class={className}
-  />
-{/if}
+<a href="./">
+  {#if browser && mode.current === "dark"}
+    <img
+      width="124"
+      height="32"
+      src={`${base}/logo.png`}
+      alt="My Sweet Sport"
+      class={className}
+    />
+  {:else}
+    <img
+      width="124"
+      height="32"
+      src={`${base}/logo-light.png`}
+      alt="My Sweet Sport"
+      class={className}
+    />
+  {/if}
+</a>
