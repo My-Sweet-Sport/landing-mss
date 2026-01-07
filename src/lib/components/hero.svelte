@@ -5,6 +5,30 @@
   import * as Dialog from "$lib/components/ui/dialog/index.js";
   import { cn } from "$lib/utils";
   import { ArrowUpRight, CirclePlay } from "lucide-svelte";
+
+  const hoverScale = 1.05;
+  const rotateStrength = 30;
+  const translateStrength = 30;
+
+  let imageTransform = "scale(1)";
+
+  const handlePointerMove = (event: PointerEvent) => {
+    const container = event.currentTarget as HTMLElement;
+    const rect = container.getBoundingClientRect();
+    const percentX = (event.clientX - rect.left) / rect.width - 0.5;
+    const percentY = (event.clientY - rect.top) / rect.height - 0.5;
+
+    const translateX = percentX * translateStrength;
+    const translateY = percentY * translateStrength;
+    const rotateX = -percentY * rotateStrength;
+    const rotateY = percentX * rotateStrength;
+
+    imageTransform = `perspective(1200px) translate3d(${translateX}px, ${translateY}px, 35px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(${hoverScale})`;
+  };
+
+  const resetImageTransform = () => {
+    imageTransform = "scale(1)";
+  };
 </script>
 
 <div
@@ -79,11 +103,15 @@
     </div>
     <div
       class="relative lg:max-w-lg xl:max-w-xl w-full bg-accent rounded-xl aspect-square"
+      on:pointerenter={handlePointerMove}
+      on:pointermove={handlePointerMove}
+      on:pointerleave={resetImageTransform}
     >
       <img
         src={`${base}/hero.png`}
         alt=""
-        class="absolute inset-0 size-full object-cover rounded-xl border-muted border"
+        class="absolute inset-0 size-full object-cover rounded-xl border-muted border transition-transform duration-300 ease-out will-change-transform"
+        style={`transform: ${imageTransform}`}
       />
     </div>
   </div>
