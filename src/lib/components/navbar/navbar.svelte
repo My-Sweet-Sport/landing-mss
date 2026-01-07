@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { base } from "$app/paths";
   import DarkModeSwitch from "$lib/components/darkModeSwitch.svelte";
   import { Button } from "$lib/components/ui/button/index.js";
   import Logo from "./logo.svelte";
@@ -21,7 +22,7 @@
         class="hidden sm:inline-flex"
         href="https://app.mysweetsport.com/login">Sign In</Button
       >
-      <Button class="xs:inline-flex" href="#pricing">Get Started</Button>
+      <Button class="xs:inline-flex" href={`${base}/#pricing`}>Get Started</Button>
       <div class="md:hidden">
         <NavigationSheet />
       </div>

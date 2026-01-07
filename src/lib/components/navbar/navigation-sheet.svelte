@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { base } from "$app/paths";
   import { Button, buttonVariants } from "$lib/components/ui/button/index.js";
   import { cn } from "$lib/utils.js";
   import MenuIcon from "lucide-svelte/icons/menu";
@@ -69,7 +70,7 @@
         class="w-full sm:hidden"
         href="https://app.mysweetsport.com/login">Sign In</Button
       >
-      <Button class="w-full xs:hidden" href="#pricing">Get Started</Button>
+      <Button class="w-full xs:hidden" href={`${base}/#pricing`}>Get Started</Button>
     </div>
   </aside>
 {/if}

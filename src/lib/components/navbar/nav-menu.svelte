@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { base } from "$app/paths";
   import {
     Item as NavigationMenuItem,
     Link as NavigationMenuLink,
@@ -11,11 +12,11 @@
   type NavMenuProps = Omit<NavigationMenuPrimitive.RootProps, "children">;
 
   const links = [
-    { href: ".", label: "Home" },
-    { href: "#features", label: "Features" },
-    { href: "#faq", label: "FAQ" },
-    { href: "#testimonials", label: "Testimonials" },
-    { href: "#pricing", label: "Pricing" },
+    { href: `${base}/`, label: "Home" },
+    { href: `${base}/#features`, label: "Features" },
+    { href: `${base}/#faq`, label: "FAQ" },
+    { href: `${base}/#testimonials`, label: "Testimonials" },
+    { href: `${base}/#pricing`, label: "Pricing" },
     { href: "https://app.mysweetsport.com/showcase", label: "Showcase" },
     { href: "https://app.mysweetsport.com/myiq", label: "myIQ" },
   ];
