@@ -1,26 +1,20 @@
 <script lang="ts">
-  import { Separator } from "$lib/components/ui/separator";
-  import { Dribbble, Github, Twitch, Twitter } from "lucide-svelte";
-
   import { base } from "$app/paths";
 
   const footerSections = [
     {
       title: "Product",
       links: [
-        { title: "Overview", href: "#" },
+        { title: "Overview", href: "./" },
         { title: "Features", href: "./#features" },
-        { title: "Solutions", href: "#" },
-        { title: "Tutorials", href: "#" },
-        { title: "Pricing", href: "#" },
-        { title: "Releases", href: "#" },
+        { title: "Pricing", href: "./#pricing" },
+        { title: "Releases", href: "https://app.mysweetsport.com/changelog" },
       ],
     },
     {
       title: "Company",
       links: [
         { title: "About us", href: "#" },
-
         { title: "Contact", href: "#" },
       ],
     },
