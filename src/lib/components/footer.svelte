@@ -53,7 +53,7 @@
       title: "Legal",
       links: [
         { title: "Terms", href: "#" },
-        { title: "Privacy", href: "#" },
+        { title: "Privacy", href: "/privacy" },
         { title: "Cookies", href: "#" },
         { title: "Licenses", href: "#" },
         { title: "Settings", href: "#" },
@@ -77,9 +77,11 @@
         alt="My Sweet Sport"
       />
 
-      <p class="mt-4 text-muted-foreground">
-        Train your brain around your sport. Start making better decisions,
-        without leaving your couch.
+      <p class="mt-4 text-muted-foreground text-sm">
+        © 2023 MY SWEET SPORT. All Rights Reserved. All videos and shows on
+        this platform are trademarks of, and all related images and content are
+        the property of, My Sweet Sport Inc. Duplication and copy of this is
+        strictly prohibited. All rights reserved.
       </p>
     </div>
     {#each footerSections as { title: sectionTitle, links }}
