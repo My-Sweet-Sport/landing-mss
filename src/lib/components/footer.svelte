@@ -5,9 +5,9 @@
     {
       title: "Product",
       links: [
-        { title: "Overview", href: "./" },
-        { title: "Features", href: "./#features" },
-        { title: "Pricing", href: "./#pricing" },
+        { title: "Overview", href: `${base}/` },
+        { title: "Features", href: `${base}/#features` },
+        { title: "Pricing", href: `${base}/#pricing` },
         { title: "Releases", href: "https://app.mysweetsport.com/changelog" },
       ],
     },
@@ -39,7 +39,8 @@
       title: "Legal",
       links: [
         /* { title: "Terms", href: "#" }, */
-        { title: "Privacy", href: "./privacy" },
+
+        { title: "Privacy", href: `${base}/privacy` },
         /* { title: "Cookies", href: "#" },
         { title: "Licenses", href: "#" },
         { title: "Settings", href: "#" }, */
