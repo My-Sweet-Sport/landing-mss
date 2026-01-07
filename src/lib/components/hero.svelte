@@ -37,18 +37,18 @@
   <div
     class="max-w-(--breakpoint-xl) w-full flex flex-col lg:flex-row mx-auto items-center justify-between gap-y-14 gap-x-10 px-6 py-12 lg:py-0"
   >
-    <div class="max-w-xl">
+    <div class="max-w-xl text-center lg:text-left">
       <!-- <Badge class="rounded-full py-1 border-none">Just released v1.0.0</Badge> -->
       <h1
         class="mt-6 max-w-[20ch] text-3xl xs:text-4xl sm:text-5xl lg:text-[2.75rem] xl:text-5xl font-bold leading-[1.2]! tracking-tight"
       >
         <span>Train</span>
         <span
-          class="block w-full bg-linear-to-r from-[#18CF48] to-[#60efff] bg-clip-text py-2 leading-12 text-transparent lg:inline"
+          class="hero-gradient block w-full bg-clip-text py-2 leading-12 text-transparent lg:inline"
           >your brain</span
         > <span>around <br />your sport</span>
       </h1>
-      <p class="mt-6 max-w-[60ch] xs:text-lg">
+      <p class="mt-6 max-w-[60ch] xs:text-lg mx-auto lg:mx-0">
         Start making better decisions, without leaving your couch.
       </p>
       <!-- <h1
@@ -116,3 +116,23 @@
     </div>
   </div>
 </div>
+
+<style>
+  .hero-gradient {
+    background-image: linear-gradient(90deg, #18cf48, #60efff, #18cf48);
+    background-size: 200% 200%;
+    animation: hero-gradient-shift 6s ease infinite;
+  }
+
+  @keyframes hero-gradient-shift {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+</style>
