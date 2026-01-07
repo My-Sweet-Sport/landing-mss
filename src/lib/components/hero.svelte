@@ -3,6 +3,7 @@
   import { Badge } from "$lib/components/ui/badge";
   import { Button, buttonVariants } from "$lib/components/ui/button";
   import * as Dialog from "$lib/components/ui/dialog/index.js";
+  import { cn } from "$lib/utils";
   import { ArrowUpRight, CirclePlay } from "lucide-svelte";
 </script>
 
@@ -40,29 +41,38 @@
           Get Started <ArrowUpRight class="h-5! w-5!" />
         </Button>
 
-        <!-- TODO: When a user click on Watch Demo button, it should open a modal with the demo video -->
         <Dialog.Root>
           <Dialog.Trigger
-            ><Button
-              variant="outline"
-              size="lg"
-              class="w-full sm:w-auto text-base shadow-none"
-            >
-              <CirclePlay class="h-5! w-5!" /> Watch Demo
-            </Button></Dialog.Trigger
+            class={cn(
+              buttonVariants({ variant: "outline", size: "lg" }),
+              "w-full sm:w-auto text-base shadow-none"
+            )}
           >
-          <Dialog.Content>
+            <CirclePlay class="h-5! w-5!" /> Watch Demo
+          </Dialog.Trigger>
+          <Dialog.Content class="sm:max-w-3xl">
             <Dialog.Header>
-              <Dialog.Title>Are you sure absolutely sure?</Dialog.Title>
+              <Dialog.Title>Watch the MSS demo</Dialog.Title>
               <Dialog.Description>
-                <video
-                  src="https://qqvteqmiccdgbetvcggd.supabase.co/storage/v1/object/public/public/MSS-Demo-with-music.mp4"
-                  controls
-                  autoplay
-                  class="w-full rounded-md"
-                ></video>
+                See how the MSS neuro-training experience works in under 1
+                minute.
               </Dialog.Description>
             </Dialog.Header>
+            <div
+              class="mt-4 aspect-video w-full overflow-hidden rounded-lg border border-muted"
+            >
+              <video
+                src="https://qqvteqmiccdgbetvcggd.supabase.co/storage/v1/object/public/public/MSS-Demo-with-music.mp4"
+                controls
+                playsinline
+                autoplay
+                muted
+                loop
+                class="size-full object-cover"
+              >
+                Your browser does not support the video tag.
+              </video>
+            </div>
           </Dialog.Content>
         </Dialog.Root>
       </div>
