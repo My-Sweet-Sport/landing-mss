@@ -102,7 +102,7 @@
       </div>
     </div>
     <div
-      class="relative lg:max-w-lg xl:max-w-xl w-full bg-accent rounded-xl aspect-square"
+      class="relative lg:max-w-lg xl:max-w-xl w-full rounded-xl aspect-square"
       on:pointerenter={handlePointerMove}
       on:pointermove={handlePointerMove}
       on:pointerleave={resetImageTransform}
