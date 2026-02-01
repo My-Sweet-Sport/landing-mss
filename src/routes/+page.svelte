@@ -18,5 +18,5 @@
 <Hero />
 <Features />
 <FAQ />
-<!-- <Testimonial /> -->
+<Testimonial />
 <Pricing />
