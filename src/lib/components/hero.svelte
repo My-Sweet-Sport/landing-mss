@@ -1,5 +1,6 @@
 <script lang="ts">
   import { base } from "$app/paths";
+  import { t } from 'svelte-i18n';
   import { Badge } from "$lib/components/ui/badge";
   import { Button, buttonVariants } from "$lib/components/ui/button";
   import * as Dialog from "$lib/components/ui/dialog/index.js";
@@ -38,18 +39,18 @@
     class="max-w-(--breakpoint-xl) w-full flex flex-col lg:flex-row mx-auto items-center justify-between gap-y-14 gap-x-10 px-6 py-12 lg:py-0"
   >
     <div class="max-w-xl text-center lg:text-left">
-      <Badge class="rounded-full py-1 border-none">New dashboard UI released</Badge>
+      <Badge class="rounded-full py-1 border-none">{$t('hero.badge')}</Badge>
       <h1
         class="mt-6 max-w-[20ch] text-3xl xs:text-4xl sm:text-5xl lg:text-[2.75rem] xl:text-5xl font-bold leading-[1.2]! tracking-tight"
       >
-        <span>Train</span>
+        <span>{$t('hero.title.train')}</span>
         <span
           class="hero-gradient block w-full bg-clip-text py-2 leading-12 text-transparent lg:inline"
-          >your brain</span
-        > <span>around <br />your sport</span>
+          >{$t('hero.title.yourBrain')}</span
+        > <span>{$t('hero.title.around')} <br />{$t('hero.title.yourSport')}</span>
       </h1>
       <p class="mt-6 max-w-[60ch] xs:text-lg mx-auto lg:mx-0">
-        Start making better decisions, without leaving your couch.
+        {$t('hero.subtitle')}
       </p>
       <!-- <h1
         class="mt-6 max-w-[20ch] text-3xl xs:text-4xl sm:text-5xl lg:text-[2.75rem] xl:text-5xl font-bold leading-[1.2]! tracking-tight"
@@ -62,7 +63,7 @@
       </p> -->
       <div class="mt-12 flex flex-col sm:flex-row items-center gap-4">
         <Button size="lg" class="w-full sm:w-auto text-base" href="#pricing">
-          Get Started <ArrowUpRight class="h-5! w-5!" />
+          {$t('nav.getStarted')} <ArrowUpRight class="h-5! w-5!" />
         </Button>
 
         <Dialog.Root>
@@ -72,14 +73,13 @@
               "w-full sm:w-auto text-base shadow-none"
             )}
           >
-            <CirclePlay class="h-5! w-5!" /> Watch Demo
+            <CirclePlay class="h-5! w-5!" /> {$t('hero.watchDemo')}
           </Dialog.Trigger>
           <Dialog.Content class="sm:max-w-3xl">
             <Dialog.Header>
-              <Dialog.Title>Watch the MSS demo</Dialog.Title>
+              <Dialog.Title>{$t('hero.demoTitle')}</Dialog.Title>
               <Dialog.Description>
-                See how the MSS neuro-training experience works in under 1
-                minute.
+                {$t('hero.demoDescription')}
               </Dialog.Description>
             </Dialog.Header>
             <div
@@ -94,7 +94,7 @@
                 loop
                 class="size-full object-cover"
               >
-                Your browser does not support the video tag.
+                {$t('hero.videoNotSupported')}
               </video>
             </div>
           </Dialog.Content>

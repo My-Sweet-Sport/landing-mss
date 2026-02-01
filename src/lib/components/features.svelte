@@ -1,5 +1,6 @@
 <script lang="ts">
   import { base } from "$app/paths";
+  import { t } from 'svelte-i18n';
   import {
     Card,
     CardContent,
@@ -17,52 +18,46 @@
 
   type Feature = {
     icon: ComponentType;
-    title: string;
-    description: string;
+    titleKey: string;
+    descriptionKey: string;
     screenshotUrl?: string;
   };
   const features: Feature[] = [
     {
       icon: Goal,
-      title: "Improve Decisions",
+      titleKey: "features.improveDecisions.title",
+      descriptionKey: "features.improveDecisions.description",
       screenshotUrl: `${base}/questionnaire.jpeg`,
-      description:
-        "Digest community performance signals, AI scouting tips, and merch demand data to pick the next best move with confidence.",
     },
     {
       icon: BookCheck,
-      title: "New Videos Everyday",
+      titleKey: "features.newVideos.title",
+      descriptionKey: "features.newVideos.description",
       screenshotUrl: `${base}/videos.png`,
-      description:
-        "Feed your academy with daily AI-edited drills, film rooms, and highlight reels pulled straight from MySweetSport activity.",
     },
     {
       icon: ChartPie,
-      title: "Performance Tracking",
+      titleKey: "features.performanceTracking.title",
+      descriptionKey: "features.performanceTracking.description",
       screenshotUrl: `${base}/personalDashboard.png`,
-      description:
-        "Visualize streaks, session quality, and shop conversions in one pulse so you never miss a surge or slowdown.",
     },
     {
       icon: Users,
-      title: "Training For The Whole Team",
+      titleKey: "features.trainingTeam.title",
+      descriptionKey: "features.trainingTeam.description",
       screenshotUrl: `${base}/dashboard.png`,
-      description:
-        "Generate personalized tracks for coaches, captains, and superfans so every role gets the exact reps they need.",
     },
     {
       icon: FolderSync,
-      title: "Custom Videos",
+      titleKey: "features.customVideos.title",
+      descriptionKey: "features.customVideos.description",
       screenshotUrl: `${base}/customVideos.png`,
-      description:
-        "Transform any upload or live session into branded, platform-ready clips with automated lower thirds and CTAs.",
     },
     {
       icon: Zap,
-      title: "Quick 5-min Sessions",
+      titleKey: "features.quickSessions.title",
+      descriptionKey: "features.quickSessions.description",
       screenshotUrl: `${base}/5min.jpeg`,
-      description:
-        "Spin up bite-sized workouts in minutes, optimized for the MySweetSport mobile flow.",
     },
   ];
 </script>
@@ -74,12 +69,12 @@
   <h2
     class="text-3xl xs:text-4xl md:text-5xl md:leading-[3.5rem] font-bold tracking-tight sm:max-w-xl sm:text-center sm:mx-auto"
   >
-    Boost Your Strategy with Smart Features
+    {$t('features.title')}
   </h2>
   <div
     class="mt-8 xs:mt-14 w-full mx-auto grid md:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-12"
   >
-    {#each features as feature (feature.title)}
+    {#each features as feature (feature.titleKey)}
       <Card
         class="feature-card group relative flex flex-col border rounded-xl overflow-hidden shadow-none"
       >
@@ -90,17 +85,17 @@
             class="feature-card-icon text-muted-foreground transition-colors duration-200 group-hover:text-primary"
           />
           <h4 class="mt-3 text-xl font-bold tracking-tight">
-            {feature.title}
+            {$t(feature.titleKey)}
           </h4>
           <p class="mt-1 text-muted-foreground text-sm xs:text-[17px]">
-            {feature.description}
+            {$t(feature.descriptionKey)}
           </p>
         </CardHeader>
         <CardContent class="relative z-10 mt-auto px-0 pb-0">
           {#if feature.screenshotUrl}
             <img
               src={feature.screenshotUrl}
-              alt={feature.title}
+              alt={$t(feature.titleKey)}
               class=" h-52 ml-6 rounded-tl-xl aspect-video"
             />
           {/if}
