@@ -1,0 +1,162 @@
+{
+  "nav": {
+    "home": "Accueil",
+    "features": "Fonctionnalités",
+    "faq": "FAQ",
+    "testimonials": "Témoignages",
+    "pricing": "Tarifs",
+    "showcase": "Vitrine",
+    "myiq": "monIQ",
+    "signIn": "Se connecter",
+    "getStarted": "Commencer"
+  },
+  "language": {
+    "english": "🇺🇸 English",
+    "french": "🇫🇷 Français",
+    "selectLanguage": "Sélectionner la langue"
+  },
+  "hero": {
+    "badge": "Nouvelle interface de tableau de bord disponible",
+    "title": {
+      "train": "Entraînez",
+      "yourBrain": "votre cerveau",
+      "around": "autour de",
+      "yourSport": "votre sport"
+    },
+    "subtitle": "Commencez à prendre de meilleures décisions, sans quitter votre canapé.",
+    "watchDemo": "Voir la démo",
+    "demoTitle": "Regarder la démo MSS",
+    "demoDescription": "Découvrez comment fonctionne l'expérience de neuro-entraînement MSS en moins d'une minute.",
+    "videoNotSupported": "Votre navigateur ne prend pas en charge la balise vidéo."
+  },
+  "features": {
+    "title": "Boostez votre stratégie avec des fonctionnalités intelligentes",
+    "improveDecisions": {
+      "title": "Améliorez vos décisions",
+      "description": "Analysez les signaux de performance de la communauté, les conseils de recrutement IA et les données de demande de marchandises pour choisir la meilleure action avec confiance."
+    },
+    "newVideos": {
+      "title": "Nouvelles vidéos chaque jour",
+      "description": "Alimentez votre académie avec des exercices quotidiens édités par IA, des salles de film et des moments forts tirés directement de l'activité MySweetSport."
+    },
+    "performanceTracking": {
+      "title": "Suivi de performance",
+      "description": "Visualisez les séries, la qualité des sessions et les conversions de boutique en un coup d'œil pour ne jamais manquer une hausse ou une baisse."
+    },
+    "trainingTeam": {
+      "title": "Entraînement pour toute l'équipe",
+      "description": "Générez des parcours personnalisés pour les entraîneurs, les capitaines et les superfans afin que chaque rôle obtienne exactement les répétitions dont il a besoin."
+    },
+    "customVideos": {
+      "title": "Vidéos personnalisées",
+      "description": "Transformez n'importe quel téléchargement ou session en direct en clips prêts pour la plateforme avec des tiers inférieurs et des CTA automatisés."
+    },
+    "quickSessions": {
+      "title": "Sessions rapides de 5 minutes",
+      "description": "Créez des entraînements courts en quelques minutes, optimisés pour le flux mobile MySweetSport."
+    }
+  },
+  "faq": {
+    "title": "Questions fréquemment posées",
+    "subtitle": "Réponses rapides aux questions courantes sur nos produits et services.",
+    "questions": {
+      "whatIs": {
+        "question": "Qu'est-ce que MySweetSport ?",
+        "answer": "My Sweet Sport est une plateforme web qui fournit des solutions de prise de décision pour les passionnés de sport, les entraîneurs et les athlètes, à travers un catalogue de vidéos de haute qualité."
+      },
+      "teamSubscription": {
+        "question": "Comment puis-je m'abonner en tant qu'équipe ?",
+        "answer": "Contactez-nous dès aujourd'hui pour discuter des options d'abonnement personnalisées pour votre équipe et profitez des avantages de notre catalogue complet de vidéos de haute qualité."
+      },
+      "pricing": {
+        "question": "Combien coûte MySweetSport ?",
+        "answer": "Cliquez simplement sur le lien Tarifs en haut de la page pour obtenir plus d'informations sur nos forfaits."
+      },
+      "cancellation": {
+        "question": "Est-il facile d'annuler l'abonnement ?",
+        "answer": "Il suffit d'aller sur la page du compte et de cliquer sur Annuler l'adhésion."
+      }
+    }
+  },
+  "testimonials": {
+    "title": "Témoignages",
+    "goToSlide": "Aller à la diapositive"
+  },
+  "pricing": {
+    "title": "Tarifs",
+    "mostPopular": "Le plus populaire",
+    "plans": {
+      "free": {
+        "name": "Gratuit",
+        "price": "0$",
+        "description": "Essayez-le, sans engagement.",
+        "features": {
+          "limitedAccess": "Accès limité à la plateforme",
+          "sdQuality": "Vidéos en qualité SD",
+          "watchAnywhere": "Regardez où vous voulez"
+        },
+        "buttonText": "Créer un compte gratuit"
+      },
+      "individual": {
+        "name": "Individuel",
+        "price": "9,99$/mois",
+        "description": "Parfait pour un seul abonné.",
+        "features": {
+          "fullAccess": "Accès complet à la plateforme",
+          "highQuality": "Vidéos de haute qualité",
+          "watchAnywhere": "Regardez où vous voulez"
+        },
+        "buttonText": "Commencer"
+      },
+      "teams": {
+        "name": "Équipes",
+        "price": "Personnalisé",
+        "description": "Parfait pour les équipes.",
+        "features": {
+          "allIndividual": "Toutes les fonctionnalités",
+          "teamAccess": "Accès pour toute l'équipe",
+          "customPayment": "Multiples options de paiement"
+        },
+        "buttonText": "Parler aux ventes"
+      }
+    }
+  },
+  "footer": {
+    "copyright": "© 2023 MY SWEET SPORT. Tous droits réservés. Toutes les vidéos et émissions sur cette plateforme sont des marques de commerce de, et tout le contenu et les images connexes sont la propriété de, My Sweet Sport Inc. La duplication et la copie de ceci sont strictement interdites. Tous droits réservés.",
+    "sections": {
+      "product": {
+        "title": "Produit",
+        "overview": "Aperçu",
+        "features": "Fonctionnalités",
+        "pricing": "Tarifs",
+        "releases": "Versions"
+      },
+      "company": {
+        "title": "Entreprise",
+        "about": "À propos de nous",
+        "contact": "Contact"
+      },
+      "resources": {
+        "title": "Ressources",
+        "helpCentre": "Centre d'aide",
+        "support": "Support"
+      },
+      "social": {
+        "title": "Réseaux sociaux",
+        "twitter": "Twitter",
+        "linkedin": "LinkedIn",
+        "facebook": "Facebook",
+        "github": "GitHub"
+      },
+      "legal": {
+        "title": "Légal",
+        "privacy": "Confidentialité",
+        "contact": "Contact"
+      }
+    }
+  },
+  "meta": {
+    "title": "My Sweet Sport",
+    "description": "Découvrez ce qu'est My Sweet Sport, comment cela fonctionne et comment cela peut vous aider à améliorer vos performances sportives."
+  }
+}

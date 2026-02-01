@@ -1,6 +1,8 @@
 <script lang="ts">
   import { base } from "$app/paths";
   import { ModeWatcher } from "mode-watcher";
+  import { isLoading } from 'svelte-i18n';
+  import '$lib/i18n';
   let { children } = $props();
 
   import "./layout.css";

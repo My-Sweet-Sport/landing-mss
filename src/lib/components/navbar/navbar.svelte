@@ -1,6 +1,8 @@
 <script lang="ts">
   import { base } from "$app/paths";
+  import { t } from 'svelte-i18n';
   import DarkModeSwitch from "$lib/components/darkModeSwitch.svelte";
+  import LanguageSwitcher from "$lib/components/language-switcher.svelte";
   import { Button } from "$lib/components/ui/button/index.js";
   import Logo from "./logo.svelte";
   import NavMenu from "./nav-menu.svelte";
@@ -17,12 +19,13 @@
 
     <div class="flex items-center gap-3">
       <DarkModeSwitch />
+      <LanguageSwitcher />
       <Button
         variant="outline"
         class="hidden sm:inline-flex"
-        href="https://app.mysweetsport.com/login">Sign In</Button
+        href="https://app.mysweetsport.com/login">{$t('nav.signIn')}</Button
       >
-      <Button class="xs:inline-flex" href={`${base}/#pricing`}>Get Started</Button>
+      <Button class="xs:inline-flex" href={`${base}/#pricing`}>{$t('nav.getStarted')}</Button>
       <div class="md:hidden">
         <NavigationSheet />
       </div>

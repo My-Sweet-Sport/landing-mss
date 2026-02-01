@@ -1,50 +1,51 @@
 <script lang="ts">
   import { base } from "$app/paths";
+  import { t } from 'svelte-i18n';
 
   const footerSections = [
     {
-      title: "Product",
+      titleKey: "footer.sections.product.title",
       links: [
-        { title: "Overview", href: `${base}/` },
-        { title: "Features", href: `${base}/#features` },
-        { title: "Pricing", href: `${base}/#pricing` },
-        { title: "Releases", href: "https://app.mysweetsport.com/changelog" },
+        { titleKey: "footer.sections.product.overview", href: `${base}/` },
+        { titleKey: "footer.sections.product.features", href: `${base}/#features` },
+        { titleKey: "footer.sections.product.pricing", href: `${base}/#pricing` },
+        { titleKey: "footer.sections.product.releases", href: "https://app.mysweetsport.com/changelog" },
       ],
     },
     {
-      title: "Company",
+      titleKey: "footer.sections.company.title",
       links: [
-        { title: "About us", href: "#" },
-        { title: "Contact", href: "#" },
+        { titleKey: "footer.sections.company.about", href: "#" },
+        { titleKey: "footer.sections.company.contact", href: "#" },
       ],
     },
     {
-      title: "Resources",
+      titleKey: "footer.sections.resources.title",
       links: [
-        { title: "Help centre", href: "#" },
+        { titleKey: "footer.sections.resources.helpCentre", href: "#" },
 
-        { title: "Support", href: "#" },
+        { titleKey: "footer.sections.resources.support", href: "#" },
       ],
     },
     {
-      title: "Social",
+      titleKey: "footer.sections.social.title",
       links: [
-        { title: "Twitter", href: "#" },
-        { title: "LinkedIn", href: "#" },
-        { title: "Facebook", href: "#" },
-        { title: "GitHub", href: "#" },
+        { titleKey: "footer.sections.social.twitter", href: "#" },
+        { titleKey: "footer.sections.social.linkedin", href: "#" },
+        { titleKey: "footer.sections.social.facebook", href: "#" },
+        { titleKey: "footer.sections.social.github", href: "#" },
       ],
     },
     {
-      title: "Legal",
+      titleKey: "footer.sections.legal.title",
       links: [
-        /* { title: "Terms", href: "#" }, */
+        /* { titleKey: "Terms", href: "#" }, */
 
-        { title: "Privacy", href: `${base}/privacy` },
-        /* { title: "Cookies", href: "#" },
-        { title: "Licenses", href: "#" },
-        { title: "Settings", href: "#" }, */
-        { title: "Contact", href: "#" },
+        { titleKey: "footer.sections.legal.privacy", href: `${base}/privacy` },
+        /* { titleKey: "Cookies", href: "#" },
+        { titleKey: "Licenses", href: "#" },
+        { titleKey: "Settings", href: "#" }, */
+        { titleKey: "footer.sections.legal.contact", href: "#" },
       ],
     },
   ] as const;
@@ -65,20 +66,17 @@
       />
 
       <p class="mt-4 text-muted-foreground text-sm">
-        © 2023 MY SWEET SPORT. All Rights Reserved. All videos and shows on
-        this platform are trademarks of, and all related images and content are
-        the property of, My Sweet Sport Inc. Duplication and copy of this is
-        strictly prohibited. All rights reserved.
+        {$t('footer.copyright')}
       </p>
     </div>
-    {#each footerSections as { title: sectionTitle, links }}
+    {#each footerSections as { titleKey: sectionTitleKey, links }}
       <div class="xl:justify-self-end">
-        <h6 class="font-semibold text-foreground">{sectionTitle}</h6>
+        <h6 class="font-semibold text-foreground">{$t(sectionTitleKey)}</h6>
         <ul class="mt-6 space-y-4">
-          {#each links as { title: linkTitle, href }}
+          {#each links as { titleKey: linkTitleKey, href }}
             <li>
               <a {href} class="text-muted-foreground hover:text-foreground"
-                >{linkTitle}</a
+                >{$t(linkTitleKey)}</a
               >
             </li>
           {/each}

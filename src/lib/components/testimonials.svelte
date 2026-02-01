@@ -1,5 +1,6 @@
 <script lang="ts">
   import { base } from "$app/paths";
+  import { t } from 'svelte-i18n';
   import { Star } from "lucide-svelte";
 
   type Testimonial = {
@@ -85,7 +86,7 @@
   <h2
     class="mb-8 xs:mb-14 text-4xl md:text-5xl font-bold text-center tracking-tight"
   >
-    Testimonials
+    {$t('testimonials.title')}
   </h2>
   <div class="container w-full mx-auto">
     <div class="relative overflow-hidden">
@@ -177,7 +178,7 @@
       {#each testimonials as testimonial, index (testimonial.id)}
         <button
           type="button"
-          aria-label={`Go to slide ${index + 1}`}
+          aria-label={`${$t('testimonials.goToSlide')} ${index + 1}`}
           on:click={() => setSlide(index)}
           class={`h-3.5 w-3.5 rounded-full border-2 transition-colors ${current === index ? "bg-primary border-primary" : "border-border"}`}
         ></button>

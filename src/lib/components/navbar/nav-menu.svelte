@@ -1,5 +1,6 @@
 <script lang="ts">
   import { base } from "$app/paths";
+  import { t } from 'svelte-i18n';
   import {
     Item as NavigationMenuItem,
     Link as NavigationMenuLink,
@@ -12,13 +13,13 @@
   type NavMenuProps = Omit<NavigationMenuPrimitive.RootProps, "children">;
 
   const links = [
-    { href: `${base}/`, label: "Home" },
-    { href: `${base}/#features`, label: "Features" },
-    { href: `${base}/#faq`, label: "FAQ" },
-    { href: `${base}/#testimonials`, label: "Testimonials" },
-    { href: `${base}/#pricing`, label: "Pricing" },
-    { href: "https://app.mysweetsport.com/showcase", label: "Showcase" },
-    { href: "https://app.mysweetsport.com/myiq", label: "myIQ" },
+    { href: `${base}/`, labelKey: "nav.home" },
+    { href: `${base}/#features`, labelKey: "nav.features" },
+    { href: `${base}/#faq`, labelKey: "nav.faq" },
+    { href: `${base}/#testimonials`, labelKey: "nav.testimonials" },
+    { href: `${base}/#pricing`, labelKey: "nav.pricing" },
+    { href: "https://app.mysweetsport.com/showcase", labelKey: "nav.showcase" },
+    { href: "https://app.mysweetsport.com/myiq", labelKey: "nav.myiq" },
   ];
 
   let { class: className, ...restProps }: NavMenuProps = $props();
@@ -31,7 +32,7 @@
     {#each links as link}
       <NavigationMenuItem>
         <NavigationMenuLink class=" !text-base" href={link.href}
-          >{link.label}</NavigationMenuLink
+          >{$t(link.labelKey)}</NavigationMenuLink
         >
       </NavigationMenuItem>
     {/each}

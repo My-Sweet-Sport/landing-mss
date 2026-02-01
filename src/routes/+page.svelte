@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { t } from 'svelte-i18n';
   import FAQ from "$lib/components/faq.svelte";
   import Features from "$lib/components/features.svelte";
   import Hero from "$lib/components/hero.svelte";
@@ -7,10 +8,10 @@
 </script>
 
 <svelte:head>
-  <title>My Sweet Sport</title>
+  <title>{$t('meta.title')}</title>
   <meta
     name="description"
-    content="Learn what is My Sweet Sport, how it works, and how it can help you grow your sport performance."
+    content={$t('meta.description')}
   />
 </svelte:head>
 

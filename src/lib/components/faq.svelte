@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { t } from 'svelte-i18n';
   import * as Accordion from "$lib/components/ui/accordion/index.js";
   import { Accordion as AccordionPrimitive } from "bits-ui";
   import { cn } from "$lib/utils";
@@ -6,23 +7,20 @@
 
   const faq = [
     {
-      question: "What is MySweetSport?",
-      answer:
-        "My Sweet Sport is a web platform that provides decision-making solutions for sports enthusiasts, coaches, and athletes, through a catalog of high-quality videos.",
+      questionKey: "faq.questions.whatIs.question",
+      answerKey: "faq.questions.whatIs.answer",
     },
     {
-      question: "How can I subscribe as a team?",
-      answer:
-        "Contact us today to discuss subscription options that are customized for your team and take advantage of the benefits of our complete catalog of high-quality videos.",
+      questionKey: "faq.questions.teamSubscription.question",
+      answerKey: "faq.questions.teamSubscription.answer",
     },
     {
-      question: "How expensive is MySweetSport?",
-      answer:
-        "Just click on the Pricing link at the top of the page to have more information on our plans.",
+      questionKey: "faq.questions.pricing.question",
+      answerKey: "faq.questions.pricing.answer",
     },
     {
-      question: "How easy is cancelling the subscription?",
-      answer: "Just go to the account page and click on Cancel Membership.",
+      questionKey: "faq.questions.cancellation.question",
+      answerKey: "faq.questions.cancellation.answer",
     },
   ];
 </script>
@@ -31,10 +29,10 @@
   <h2
     class="md:text-center text-3xl xs:text-4xl md:text-5xl leading-[1.15]! font-bold tracking-tighter"
   >
-    Frequently Asked Questions
+    {$t('faq.title')}
   </h2>
   <p class="mt-1.5 md:text-center xs:text-lg text-muted-foreground">
-    Quick answers to common questions about our products and services.
+    {$t('faq.subtitle')}
   </p>
 
   <div class="min-h-[550px] md:min-h-[320px] xl:min-h-[300px]">
@@ -43,7 +41,7 @@
       collapsible
       class="mt-8 space-y-4 md:columns-2 gap-4"
     >
-      {#each faq as { question, answer }, index}
+      {#each faq as { questionKey, answerKey }, index}
         <Accordion.Item
           value={`question-${index}`}
           class="bg-accent py-1 px-4 rounded-xl border-none mt-0! mb-4! break-inside-avoid"
@@ -55,14 +53,14 @@
                 "text-start text-lg"
               )}
             >
-              <span>{question}</span>
+              <span>{$t(questionKey)}</span>
               <Plus
                 class="h-5 w-5 shrink-0 transition-transform duration-200 "
               />
             </AccordionPrimitive.Trigger>
           </AccordionPrimitive.Header>
           <Accordion.Content class="text-[15px]">
-            {answer}
+            {$t(answerKey)}
           </Accordion.Content>
         </Accordion.Item>
       {/each}
