@@ -1,6 +1,7 @@
 <script lang="ts">
   import { base } from "$app/paths";
   import DarkModeSwitch from "$lib/components/darkModeSwitch.svelte";
+  import LanguageSwitcher from "$lib/components/language-switcher.svelte";
   import { Button } from "$lib/components/ui/button/index.js";
   import Logo from "./logo.svelte";
   import NavMenu from "./nav-menu.svelte";
@@ -17,6 +18,7 @@
 
     <div class="flex items-center gap-3">
       <DarkModeSwitch />
+      <LanguageSwitcher />
       <Button
         variant="outline"
         class="hidden sm:inline-flex"

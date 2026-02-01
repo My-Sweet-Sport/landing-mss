@@ -1,0 +1,16 @@
+{
+  "nav": {
+    "home": "Home",
+    "features": "Features",
+    "pricing": "Pricing",
+    "about": "About",
+    "contact": "Contact",
+    "signIn": "Sign In",
+    "getStarted": "Get Started"
+  },
+  "language": {
+    "english": "English",
+    "french": "Français",
+    "selectLanguage": "Select language"
+  }
+}
