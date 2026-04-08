@@ -16,7 +16,7 @@
     { href: `${base}/`, labelKey: "nav.home" },
     { href: `${base}/#features`, labelKey: "nav.features" },
     { href: `${base}/#faq`, labelKey: "nav.faq" },
-    { href: `${base}/#testimonials`, labelKey: "nav.testimonials" },
+    /* { href: `${base}/#testimonials`, labelKey: "nav.testimonials" }, */
     { href: `${base}/#pricing`, labelKey: "nav.pricing" },
     { href: "https://app.mysweetsport.com/showcase", labelKey: "nav.showcase" },
     { href: "https://app.mysweetsport.com/myiq", labelKey: "nav.myiq" },
