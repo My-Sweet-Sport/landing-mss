@@ -1,6 +1,6 @@
 {
   "title": {
-    "fr": "Un nouveau site pour MySweetSport",
+    "fr": "Un nouveau site pour MySweetSport test",
     "en": "A new website for MySweetSport"
   },
   "slug": "nouveau-site",
@@ -11,10 +11,8 @@
     "en": "Our products, solutions and news now live in one place."
   },
   "body": {
-    "fr": "<p>Notre site fait peau neuve. Vous y trouverez désormais nos deux produits, <strong>MySweetSport Go</strong> et <strong>MySweetSport Talent</strong>, ainsi que les annonces de nos partenariats et de nos événements.</p><p>Exemple de nouvelle : modifiez-la ou supprimez-la dans le CMS.</p>",
-    "en": "<p>Our website has been rebuilt. It now presents our two products, <strong>MySweetSport Go</strong> and <strong>MySweetSport Talent</strong>, along with announcements about our partnerships and events.</p><p>Sample post: edit or delete it in the CMS.</p>"
+    "fr": "Notre site fait peau neuve. Vous y trouverez désormais nos deux produits, **MySweetSport Go** et **MySweetSport Talent**, ainsi que les annonces de nos partenariats et de nos événements.\n\nExemple de nouvelle : modifiez-la ou supprimez-la dans le CMS.",
+    "en": "Our website has been rebuilt. It now presents our two products, **MySweetSport Go** and **MySweetSport Talent**, along with announcements about our partnerships and events.\n\nSample post: edit or delete it in the CMS."
   },
-  "image": "",
-  "link": "",
   "draft": false
 }
