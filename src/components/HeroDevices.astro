@@ -1,0 +1,468 @@
+---
+// Hero visual: the Talent console in a browser window, with Go on an iPhone in front.
+// Built in HTML from each app's own colours so it stays sharp and light.
+// shortcut: these are drawn mockups, not screenshots; swap in real captures when there are some.
+import type { Lang } from '../lib/i18n';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const fr = lang === 'fr';
+const L = fr
+  ? {
+      label: 'Aperçu de MySweetSport Go sur iPhone et de la console MySweetSport Talent',
+      nav: ['Événements', 'Inscriptions', 'Athlètes', 'Clubs'],
+      title: 'Inscriptions',
+      event: 'Camp d’identification U17',
+      stats: [['Inscrits', '48'], ['Payées', '45'], ['Consentements', '100 %']],
+      paid: 'Payé',
+      pending: 'En attente',
+      drill: 'Défense · lecture',
+      question: 'Où va tomber le ballon?',
+      correct: 'Bonne zone',
+      accuracy: 'Précision',
+      streak: '12 jours',
+    }
+  : {
+      label: 'Preview of MySweetSport Go on iPhone and the MySweetSport Talent console',
+      nav: ['Events', 'Registrations', 'Athletes', 'Clubs'],
+      title: 'Registrations',
+      event: 'U17 identification camp',
+      stats: [['Registered', '48'], ['Paid', '45'], ['Consent', '100%']],
+      paid: 'Paid',
+      pending: 'Pending',
+      drill: 'Defence · reading',
+      question: 'Where will the ball land?',
+      correct: 'Right zone',
+      accuracy: 'Accuracy',
+      streak: '12 days',
+    };
+const pos = fr ? ['Passeur', 'Libéro', 'Central', 'Attaquant'] : ['Setter', 'Libero', 'Middle', 'Outside'];
+const rows = [
+  ['LG', 'L. Gagnon', pos[0], true],
+  ['ÉR', 'É. Roy', pos[1], true],
+  ['MC', 'M. Côté', pos[2], false],
+  ['SB', 'S. Bouchard', pos[3], true],
+] as const;
+// Court zones as seen from the back line: front row 4-3-2, back row 5-6-1
+const zones = [4, 3, 2, 5, 6, 1];
+---
+
+<div class="devices" role="img" aria-label={L.label}>
+  <div class="browser" aria-hidden="true">
+    <div class="chrome">
+      <span class="dots"><i></i><i></i><i></i></span>
+      <span class="addr">talent.mysweetsport.com/console</span>
+    </div>
+    <div class="console">
+      <aside class="side">
+        <span class="brandmark"></span>
+        {L.nav.map((n, i) => <span class:list={['nav', { on: i === 1 }]}>{n}</span>)}
+      </aside>
+      <div class="main">
+        <p class="eyebrow-s">{L.event}</p>
+        <p class="h">{L.title}</p>
+        <div class="stats">
+          {
+            L.stats.map(([k, v]) => (
+              <div class="stat">
+                <span class="k">{k}</span>
+                <span class="v">{v}</span>
+              </div>
+            ))
+          }
+        </div>
+        <div class="table">
+          {
+            rows.map(([ini, name, pos, paid]) => (
+              <div class="tr">
+                <span class="av">{ini}</span>
+                <span class="nm">{name}</span>
+                <span class="ps">{pos}</span>
+                <span class:list={['pill', { warn: !paid }]}>{paid ? L.paid : L.pending}</span>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="phone" aria-hidden="true">
+    <div class="screen">
+      <span class="island"></span>
+      <p class="drill">{L.drill}</p>
+      <div class="clip">
+        <span class="net"></span>
+        <span class="ball"></span>
+        <span class="pause"><i></i><i></i></span>
+      </div>
+      <p class="q">{L.question}</p>
+      <div class="zones">
+        {zones.map((z) => <span class:list={['z', { pick: z === 5 }]}>{z}</span>)}
+      </div>
+      <p class="ok"><span class="check"></span>{L.correct}</p>
+      <div class="acc">
+        <div class="acc-top">
+          <span>{L.accuracy}</span>
+          <strong>73%</strong>
+        </div>
+        <span class="bar"><i></i></span>
+        <span class="streak">{L.streak}</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .devices {
+    position: relative;
+    width: 100%;
+    max-width: 36rem;
+    aspect-ratio: 36 / 27;
+    container-type: inline-size;
+    /* All sizes below are in cqw so the whole scene scales as one picture */
+  }
+
+  /* Talent console (Talent: dark, #18CF48, Inter + mono numbers) */
+  .browser {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 77%;
+    border-radius: 2.4cqw;
+    overflow: hidden;
+    background: #0c0d10;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    box-shadow:
+      0 4cqw 10cqw -3cqw rgba(0, 0, 0, 0.75),
+      0 0 0 1px rgba(0, 0, 0, 0.4);
+  }
+  .chrome {
+    display: flex;
+    align-items: center;
+    gap: 2cqw;
+    padding: 1.5cqw 2cqw;
+    background: #16171c;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  }
+  .dots {
+    display: flex;
+    gap: 0.9cqw;
+  }
+  .dots i {
+    width: 1.3cqw;
+    height: 1.3cqw;
+    border-radius: 50%;
+    background: #3a3c45;
+  }
+  .addr {
+    flex: 1;
+    padding: 0.6cqw 1.6cqw;
+    border-radius: 1cqw;
+    background: #0c0d10;
+    color: #8b8e99;
+    font-size: 1.55cqw;
+    font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+  .console {
+    display: grid;
+    grid-template-columns: 22% 1fr;
+    min-height: 50cqw;
+  }
+  .side {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6cqw;
+    padding: 2.2cqw 1.6cqw;
+    border-right: 1px solid rgba(255, 255, 255, 0.07);
+    background: #101115;
+  }
+  .brandmark {
+    width: 3.4cqw;
+    height: 3.4cqw;
+    margin: 0 0 1.6cqw 0.6cqw;
+    border-radius: 0.9cqw;
+    background: #18cf48;
+  }
+  .nav {
+    padding: 0.9cqw 1.2cqw;
+    border-radius: 0.9cqw;
+    color: #8b8e99;
+    font-size: 1.6cqw;
+  }
+  .nav.on {
+    background: rgba(24, 207, 72, 0.12);
+    color: #e9eaee;
+  }
+  .main {
+    padding: 2.4cqw 2.6cqw;
+    min-width: 0;
+  }
+  .eyebrow-s {
+    color: #18cf48;
+    font-size: 1.45cqw;
+    font-weight: 600;
+  }
+  .h {
+    margin-top: 0.4cqw;
+    color: #f2f3f5;
+    font-size: 2.8cqw;
+    font-weight: 650;
+    line-height: 1.2;
+  }
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.2cqw;
+    margin-top: 2cqw;
+  }
+  .stat {
+    display: grid;
+    gap: 0.3cqw;
+    padding: 1.3cqw 1.5cqw;
+    border-radius: 1.2cqw;
+    background: #15161b;
+    border: 1px solid rgba(255, 255, 255, 0.07);
+  }
+  .k {
+    color: #8b8e99;
+    font-size: 1.35cqw;
+    white-space: nowrap;
+  }
+  .v {
+    color: #f2f3f5;
+    font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+    font-size: 2.6cqw;
+    font-weight: 600;
+    line-height: 1.1;
+  }
+  .table {
+    margin-top: 2cqw;
+    border-radius: 1.2cqw;
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    overflow: hidden;
+  }
+  .tr {
+    display: grid;
+    grid-template-columns: auto 1fr auto auto;
+    align-items: center;
+    gap: 1.4cqw;
+    padding: 1.1cqw 1.5cqw;
+    font-size: 1.5cqw;
+    color: #d6d8de;
+  }
+  .tr + .tr {
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+  }
+  .av {
+    display: grid;
+    place-items: center;
+    width: 3cqw;
+    height: 3cqw;
+    border-radius: 50%;
+    background: #23252d;
+    color: #b8bbc5;
+    font-size: 1.15cqw;
+    font-weight: 600;
+  }
+  .nm {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .ps {
+    color: #8b8e99;
+  }
+  .pill {
+    padding: 0.35cqw 1.1cqw;
+    border-radius: 99px;
+    background: rgba(24, 207, 72, 0.14);
+    color: #4be274;
+    font-size: 1.3cqw;
+    font-weight: 600;
+  }
+  .pill.warn {
+    background: rgba(245, 180, 60, 0.14);
+    color: #f2bb54;
+  }
+
+  /* Go on iPhone (Go: #05070a ground, #5bff9f accent) */
+  .phone {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 30%;
+    aspect-ratio: 9 / 19.2;
+    padding: 1.1cqw;
+    border-radius: 6.2cqw;
+    background: linear-gradient(150deg, #3a3b44, #15161b 40%, #26272e);
+    box-shadow:
+      0 5cqw 10cqw -3cqw rgba(0, 0, 0, 0.8),
+      0 0 9cqw -2cqw rgba(91, 255, 159, 0.35);
+  }
+  .screen {
+    position: relative;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5cqw;
+    padding: 6.4cqw 2.4cqw 2.4cqw;
+    border-radius: 5.2cqw;
+    overflow: hidden;
+    background: radial-gradient(120% 50% at 50% 0%, #0d2118, #05070a 70%);
+    color: #eafff2;
+  }
+  .island {
+    position: absolute;
+    top: 1.6cqw;
+    left: 50%;
+    width: 9cqw;
+    height: 2.6cqw;
+    translate: -50% 0;
+    border-radius: 99px;
+    background: #000;
+  }
+  .drill {
+    color: #8fa8a0;
+    font-size: 1.5cqw;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+  }
+  .clip {
+    position: relative;
+    aspect-ratio: 16 / 10;
+    border-radius: 1.6cqw;
+    overflow: hidden;
+    background:
+      linear-gradient(180deg, rgba(5, 7, 10, 0) 40%, rgba(5, 7, 10, 0.7)),
+      linear-gradient(160deg, #2f4a5c 0%, #1d3140 45%, #8a5a3a 46%, #a06a44 100%);
+  }
+  .net {
+    position: absolute;
+    left: 8%;
+    right: 8%;
+    top: 40%;
+    height: 0.5cqw;
+    background: rgba(255, 255, 255, 0.85);
+    box-shadow: 0 1cqw 0 -0.1cqw rgba(255, 255, 255, 0.25);
+  }
+  .ball {
+    position: absolute;
+    left: 58%;
+    top: 16%;
+    width: 2.4cqw;
+    height: 2.4cqw;
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 35%, #fff, #f1d35a 60%, #2f6fd1);
+  }
+  .pause {
+    position: absolute;
+    right: 1.4cqw;
+    bottom: 1.2cqw;
+    display: flex;
+    gap: 0.5cqw;
+  }
+  .pause i {
+    width: 0.7cqw;
+    height: 2.2cqw;
+    border-radius: 0.3cqw;
+    background: #fff;
+  }
+  .q {
+    font-size: 2.2cqw;
+    font-weight: 700;
+    line-height: 1.15;
+  }
+  .zones {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.8cqw;
+  }
+  .z {
+    display: grid;
+    place-items: center;
+    aspect-ratio: 1.15;
+    border-radius: 1.2cqw;
+    background: #0e1317;
+    border: 1px solid rgba(91, 255, 159, 0.12);
+    color: #8a9c96;
+    font-size: 1.9cqw;
+    font-weight: 700;
+  }
+  .z.pick {
+    background: rgba(91, 255, 159, 0.18);
+    border-color: #5bff9f;
+    color: #5bff9f;
+    box-shadow: 0 0 3cqw -0.5cqw rgba(91, 255, 159, 0.6);
+  }
+  .ok {
+    display: flex;
+    align-items: center;
+    gap: 0.9cqw;
+    color: #5bff9f;
+    font-size: 1.6cqw;
+    font-weight: 700;
+  }
+  .check {
+    width: 2.2cqw;
+    height: 2.2cqw;
+    border-radius: 50%;
+    background:
+      no-repeat center / 60% url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2304140a' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m5 12 5 5 9-10'/%3E%3C/svg%3E"),
+      #5bff9f;
+  }
+  .acc {
+    margin-top: auto;
+    display: grid;
+    gap: 0.8cqw;
+    padding: 1.6cqw;
+    border-radius: 1.6cqw;
+    background: linear-gradient(180deg, #1b2226, #12181c);
+    border: 1px solid rgba(91, 255, 159, 0.16);
+  }
+  .acc-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    color: #8fa8a0;
+    font-size: 1.45cqw;
+  }
+  .acc-top strong {
+    color: #5bff9f;
+    font-size: 3cqw;
+    font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+  }
+  .bar {
+    height: 0.8cqw;
+    border-radius: 99px;
+    background: #080d10;
+    overflow: hidden;
+  }
+  .bar i {
+    display: block;
+    width: 73%;
+    height: 100%;
+    border-radius: inherit;
+    background: linear-gradient(90deg, #7cf5b0, #5bff9f);
+  }
+  .streak {
+    color: #8a9c96;
+    font-size: 1.3cqw;
+  }
+
+  /* Gentle float on the phone; global reduced-motion rule stops it */
+  @media (prefers-reduced-motion: no-preference) {
+    .phone {
+      animation: float 7s ease-in-out infinite;
+    }
+  }
+  @keyframes float {
+    50% {
+      translate: 0 -1.2cqw;
+    }
+  }
+</style>

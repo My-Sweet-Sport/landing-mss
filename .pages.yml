@@ -153,6 +153,9 @@ content:
     label: Lien du produit / Product URL
     type: string
     required: true
+  - name: appStoreUrl
+    label: Lien App Store (optionnel) / App Store link (optional)
+    type: string
   - name: icon
     label: Icône / Icon
     type: image
@@ -339,6 +342,7 @@ content:
           values:
           - brain
           - users
+          - eye
           - video
           - chart
           - handshake

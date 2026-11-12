@@ -63,6 +63,7 @@ const products = defineCollection({
     order: z.number().default(0),
     icon: z.string().optional().nullable(),
     url: z.string(),
+    appStoreUrl: optionalUrl,
     tagline: i18n,
     description: i18n,
     features: z.array(i18n).optional().nullable(),

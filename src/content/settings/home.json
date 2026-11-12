@@ -53,6 +53,14 @@
         }
       },
       {
+        "icon": "eye",
+        "title": { "fr": "Détection de talent en sélection", "en": "Talent detection for selection" },
+        "body": {
+          "fr": "Tests psychologiques et oculométrie sur de vraies séquences de match. Chaque athlète obtient un profil, et le personnel compare les candidats selon leur position.",
+          "en": "Psychological tests and eye tracking on real match footage. Each athlete gets a profile, and staff compare candidates by position."
+        }
+      },
+      {
         "icon": "video",
         "title": { "fr": "Vidéo et analyse", "en": "Video and analysis" },
         "body": {

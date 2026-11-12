@@ -3,6 +3,7 @@
   "order": 0,
   "icon": "/uploads/go-icon.png",
   "url": "https://app.mysweetsport.com",
+  "appStoreUrl": "https://apps.apple.com/app/id6775648061",
   "audience": { "fr": "Pour les athlètes et les équipes", "en": "For athletes and teams" },
   "tagline": {
     "fr": "Lis le jeu. Appelle la zone.",

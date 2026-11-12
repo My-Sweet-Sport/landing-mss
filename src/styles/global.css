@@ -12,9 +12,6 @@
   --green: #22d24b;
   --green-soft: rgba(34, 210, 75, 0.16);
   --green-ink: #06210f;
-  --paper: #f4f5f7;
-  --ink: #1b1a27;
-  --ink-muted: #545668;
 
   --font-display: 'Saira Variable', 'Arial Narrow', sans-serif;
   --font-body: 'Inter Variable', system-ui, sans-serif;
@@ -200,5 +197,24 @@ p {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+  }
+}
+
+/* Scroll reveal: only with JS and motion allowed, so content never stays hidden */
+@media (scripting: enabled) and (prefers-reduced-motion: no-preference) {
+  /* Doubled selector outranks component transitions; hover props are re-listed here */
+  [data-reveal][data-reveal] {
+    opacity: 0;
+    translate: 0 18px;
+    transition:
+      opacity 0.6s ease-out calc(var(--i, 0) * 80ms),
+      translate 0.6s cubic-bezier(0.2, 0.7, 0.2, 1) calc(var(--i, 0) * 80ms),
+      transform 0.25s ease-out,
+      border-color 0.2s,
+      box-shadow 0.25s;
+  }
+  [data-reveal][data-reveal].is-in {
+    opacity: 1;
+    translate: 0 0;
   }
 }
