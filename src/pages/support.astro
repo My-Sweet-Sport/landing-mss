@@ -1,0 +1,53 @@
+---
+import { getEntry } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import { url } from '../lib/i18n';
+
+const home = (await getEntry('settings', 'home'))!.data;
+const email = home.contact.email;
+---
+
+<Base lang="fr" title="Soutien / Support" altHref="/en/">
+  <div class="wrap support">
+    <section>
+      <h1>Soutien</h1>
+      <p>
+        Une question sur MySweetSport Go ou MySweetSport Talent, un problème de connexion, ou une demande liée à
+        vos données ? Écrivez-nous{email && <> à <a href={`mailto:${email}`}>{email}</a></>}. Nous répondons
+        habituellement en un jour ouvrable.
+      </p>
+      <p>Pour savoir comment nous traitons vos renseignements, consultez notre <a href={url('/privacy/')}>politique de confidentialité</a>.</p>
+    </section>
+    <section lang="en">
+      <h2>Support</h2>
+      <p>
+        A question about MySweetSport Go or MySweetSport Talent, a sign-in problem, or a request about your data?
+        Email us{email && <> at <a href={`mailto:${email}`}>{email}</a></>}. We usually reply within one business day.
+      </p>
+      <p>To learn how we handle your information, read our <a href={url('/privacy/')}>privacy policy</a>.</p>
+    </section>
+  </div>
+</Base>
+
+<style>
+  .support {
+    max-width: 46rem;
+    padding-block: clamp(3rem, 7vw, 5rem) clamp(4rem, 9vw, 7rem);
+    display: grid;
+    gap: 3.5rem;
+  }
+  section {
+    display: grid;
+    gap: 1rem;
+  }
+  h1 {
+    font-size: var(--step-4);
+  }
+  p {
+    color: var(--muted);
+    max-width: 62ch;
+  }
+  a {
+    color: var(--green);
+  }
+</style>

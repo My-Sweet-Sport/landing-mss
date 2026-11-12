@@ -1,0 +1,90 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { t, ui, url, newsPath, formatDate, type Lang } from '../lib/i18n';
+
+interface Props {
+  entry: CollectionEntry<'news'>;
+  lang: Lang;
+}
+const { entry, lang } = Astro.props;
+const n = entry.data;
+const s = ui[lang];
+const href = url(newsPath(entry.id, lang));
+---
+
+<li class="row">
+  <div class="meta">
+    <time datetime={n.date.toISOString().slice(0, 10)}>{formatDate(n.date, lang)}</time>
+    <span class={`cat cat-${n.category}`}>{s.categories[n.category]}</span>
+  </div>
+  <div class="body">
+    <h3><a href={href}>{t(n.title, lang)}</a></h3>
+    {t(n.summary, lang) && <p>{t(n.summary, lang)}</p>}
+  </div>
+  {n.image && <img src={url(n.image)} alt="" loading="lazy" />}
+</li>
+
+<style>
+  .row {
+    position: relative;
+    display: grid;
+    grid-template-columns: 11rem minmax(0, 1fr) auto;
+    gap: 0.5rem 2rem;
+    padding-block: 1.75rem;
+    border-top: 1px solid var(--rule);
+  }
+  .row:last-child {
+    border-bottom: 1px solid var(--rule);
+  }
+  .meta {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    font-size: var(--step--1);
+    color: var(--muted);
+  }
+  .cat {
+    align-self: start;
+    color: var(--green);
+    font-weight: 600;
+  }
+  h3 {
+    font-size: var(--step-2);
+    font-stretch: 82%;
+  }
+  h3 a {
+    text-decoration: none;
+  }
+  /* Whole row is the click target */
+  h3 a::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+  }
+  .row:hover h3 {
+    color: var(--green);
+  }
+  .body p {
+    margin-top: 0.5rem;
+    color: var(--muted);
+    max-width: 60ch;
+  }
+  img {
+    width: 9rem;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    border-radius: 8px;
+  }
+  @media (max-width: 680px) {
+    .row {
+      grid-template-columns: 1fr;
+    }
+    .meta {
+      flex-direction: row;
+      gap: 1rem;
+    }
+    img {
+      display: none;
+    }
+  }
+</style>

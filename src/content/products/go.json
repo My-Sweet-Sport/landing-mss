@@ -1,0 +1,23 @@
+{
+  "name": "MySweetSport Go",
+  "order": 0,
+  "icon": "/uploads/go-icon.png",
+  "url": "https://app.mysweetsport.com",
+  "appStoreUrl": "https://apps.apple.com/app/id6775648061",
+  "audience": { "fr": "Pour les athlètes et les équipes", "en": "For athletes and teams" },
+  "tagline": {
+    "fr": "Lis le jeu. Appelle la zone.",
+    "en": "Read the game. Call the zone."
+  },
+  "description": {
+    "fr": "Une application mobile qui entraîne la lecture de jeu au volleyball. La séquence s'arrête au moment décisif : l'athlète choisit la zone où la balle va tomber et reçoit une rétroaction immédiate.",
+    "en": "A mobile app that trains game reading in volleyball. The clip pauses at the decisive moment: the athlete picks the zone where the ball will land and gets instant feedback."
+  },
+  "features": [
+    { "fr": "Vraies séquences de match", "en": "Real match footage" },
+    { "fr": "Précision par zone et progression hebdomadaire", "en": "Accuracy by zone and weekly progress" },
+    { "fr": "Séances de quelques minutes, sur mobile", "en": "Sessions of a few minutes, on mobile" },
+    { "fr": "Les entraîneurs ajoutent la vidéo de leur équipe", "en": "Coaches add their own team's footage" }
+  ],
+  "cta": { "fr": "Essayer Go", "en": "Try Go" }
+}

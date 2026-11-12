@@ -1,0 +1,22 @@
+{
+  "name": "MySweetSport Talent",
+  "order": 1,
+  "icon": "/uploads/talent-icon.svg",
+  "url": "https://talent.mysweetsport.com",
+  "audience": { "fr": "Pour les fédérations et les programmes", "en": "For federations and programs" },
+  "tagline": {
+    "fr": "Les camps d'identification, de l'inscription au dossier d'athlète.",
+    "en": "Identification camps, from registration to athlete record."
+  },
+  "description": {
+    "fr": "Publiez un camp, partagez son lien, et recevez des inscriptions bilingues déjà payées. Talent gère l'admissibilité, les reçus, le consentement parental et les mesures de chaque athlète.",
+    "en": "Publish a camp, share its link, and receive bilingual registrations that are already paid. Talent handles eligibility, receipts, parental consent and each athlete's measurements."
+  },
+  "features": [
+    { "fr": "Formulaire public en français et en anglais", "en": "Public form in French and English" },
+    { "fr": "Paiement en ligne avec reçus TPS/TVQ", "en": "Online payment with GST/QST receipts" },
+    { "fr": "Consentement parental pour les moins de 14 ans", "en": "Parental consent for athletes under 14" },
+    { "fr": "Console pour le personnel et les rôles", "en": "Console for staff and roles" }
+  ],
+  "cta": { "fr": "Ouvrir Talent", "en": "Open Talent" }
+}

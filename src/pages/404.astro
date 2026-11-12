@@ -1,0 +1,35 @@
+---
+import Base from '../layouts/Base.astro';
+import { url } from '../lib/i18n';
+---
+
+<Base lang="fr" title="Page introuvable" altHref="/en/">
+  <div class="wrap nf">
+    <h1>Hors du terrain.</h1>
+    <p>Cette page n'existe pas ou a été déplacée. <span lang="en">This page doesn't exist or has moved.</span></p>
+    <p class="links">
+      <a class="btn btn-primary" href={url('/')}>Retour à l'accueil</a>
+      <a class="btn btn-ghost" href={url('/en/')} lang="en">Go to the home page</a>
+    </p>
+  </div>
+</Base>
+
+<style>
+  .nf {
+    padding-block: clamp(4rem, 12vw, 9rem);
+    display: grid;
+    gap: 1.25rem;
+  }
+  h1 {
+    font-size: var(--step-4);
+  }
+  p {
+    color: var(--muted);
+  }
+  .links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 1rem;
+  }
+</style>

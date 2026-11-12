@@ -1,0 +1,96 @@
+{
+  "seo": {
+    "title": {
+      "fr": "MySweetSport — Technologies pour le développement des athlètes",
+      "en": "MySweetSport — Technology for athlete development"
+    },
+    "description": {
+      "fr": "MySweetSport conçoit des outils numériques pour les athlètes, les entraîneurs et les fédérations : entraînement de la lecture de jeu, identification de talents et analyse de performance.",
+      "en": "MySweetSport builds digital tools for athletes, coaches and federations: game-reading training, talent identification and performance analysis."
+    }
+  },
+  "hero": {
+    "title": {
+      "fr": "On aide les athlètes à lire le jeu, et les organisations à trouver leurs talents.",
+      "en": "We help athletes read the game, and organizations find their talent."
+    },
+    "subtitle": {
+      "fr": "MySweetSport conçoit des outils numériques pour le volleyball : de l'entraînement cognitif sur vidéo à la gestion des camps d'identification.",
+      "en": "MySweetSport builds digital tools for volleyball, from video-based cognitive training to running identification camps."
+    },
+    "primaryCta": { "fr": "Voir nos produits", "en": "See our products" },
+    "secondaryCta": { "fr": "Réserver une démo", "en": "Book a demo" }
+  },
+  "about": {
+    "title": { "fr": "Qui sommes-nous", "en": "Who we are" },
+    "body": {
+      "fr": "MySweetSport est une entreprise québécoise de technologie sportive. Nous travaillons avec des athlètes, des entraîneurs et des fédérations pour transformer ce qui se passe sur le terrain en données utiles.\n\nNotre approche est simple : partir des vraies situations de match, mesurer ce qui compte, et donner à chacun un outil qu'il peut utiliser dès aujourd'hui.",
+      "en": "MySweetSport is a sports technology company based in Québec. We work with athletes, coaches and federations to turn what happens on the court into useful data.\n\nOur approach is simple: start from real match situations, measure what matters, and give everyone a tool they can use today."
+    },
+    "facts": []
+  },
+  "solutions": {
+    "title": { "fr": "Nos solutions", "en": "What we do" },
+    "intro": {
+      "fr": "Du joueur à la fédération, nos outils couvrent tout le parcours de développement.",
+      "en": "From player to federation, our tools cover the whole development path."
+    },
+    "items": [
+      {
+        "icon": "brain",
+        "title": { "fr": "Entraînement de la lecture de jeu", "en": "Game-reading training" },
+        "body": {
+          "fr": "Des séquences de vrais matchs, mises en pause au moment clé. L'athlète prédit la zone d'attaque et voit sa précision progresser.",
+          "en": "Real match footage, paused at the key moment. Athletes predict the attack zone and watch their accuracy improve."
+        }
+      },
+      {
+        "icon": "users",
+        "title": { "fr": "Identification de talents", "en": "Talent identification" },
+        "body": {
+          "fr": "Inscriptions en ligne aux camps, paiement, consentement parental et dossiers d'athlètes réunis dans une seule console.",
+          "en": "Online camp registration, payment, parental consent and athlete records in a single console."
+        }
+      },
+      {
+        "icon": "eye",
+        "title": { "fr": "Détection de talent en sélection", "en": "Talent detection for selection" },
+        "body": {
+          "fr": "Tests psychologiques et oculométrie sur de vraies séquences de match. Chaque athlète obtient un profil, et le personnel compare les candidats selon leur position.",
+          "en": "Psychological tests and eye tracking on real match footage. Each athlete gets a profile, and staff compare candidates by position."
+        }
+      },
+      {
+        "icon": "video",
+        "title": { "fr": "Vidéo et analyse", "en": "Video and analysis" },
+        "body": {
+          "fr": "Découpage et montage de séquences de match pour l'entraînement, le recrutement et le partage.",
+          "en": "Cutting and editing match footage for training, recruiting and sharing."
+        }
+      },
+      {
+        "icon": "chart",
+        "title": { "fr": "Données de performance", "en": "Performance data" },
+        "body": {
+          "fr": "Intégration des mesures physiques et des tests pour suivre la progression de chaque athlète dans le temps.",
+          "en": "Physical measurements and test results brought together to track each athlete's progress over time."
+        }
+      }
+    ]
+  },
+  "contact": {
+    "title": { "fr": "Parlons de votre programme", "en": "Let's talk about your program" },
+    "body": {
+      "fr": "Fédération, club ou équipe : dites-nous ce que vous cherchez à mesurer ou à améliorer.",
+      "en": "Federation, club or team: tell us what you want to measure or improve."
+    },
+    "email": "f.mondou@mysweetsport.com",
+    "demoUrl": "https://cal.com/mysweetsport/quick-45-minutes-demo?user=mysweetsport"
+  },
+  "social": {
+    "linkedin": "",
+    "instagram": "",
+    "facebook": "",
+    "youtube": ""
+  }
+}

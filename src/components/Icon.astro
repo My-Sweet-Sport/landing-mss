@@ -1,0 +1,35 @@
+---
+// Small line icons for the Solutions list. The CMS offers these names.
+interface Props {
+  name: string;
+  size?: number;
+}
+const { name, size = 28 } = Astro.props;
+const paths: Record<string, string> = {
+  brain:
+    '<path d="M12 4a3 3 0 0 0-3 3v.2A3 3 0 0 0 6 10a3 3 0 0 0 .5 1.7A3 3 0 0 0 6 17a3 3 0 0 0 3 3h3V4Z"/><path d="M12 4a3 3 0 0 1 3 3v.2A3 3 0 0 1 18 10a3 3 0 0 1-.5 1.7A3 3 0 0 1 18 17a3 3 0 0 1-3 3h-3"/><path d="M12 9h2M10 14h2"/>',
+  users:
+    '<circle cx="9" cy="8" r="3.5"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/><circle cx="17" cy="9" r="2.5"/><path d="M17 14c2.2 0 4 1.8 4 4.5"/>',
+  eye: '<path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/><path d="M12 2v2M12 20v2"/>',
+  video: '<rect x="3" y="6" width="13" height="12" rx="2"/><path d="m16 10 5-3v10l-5-3"/>',
+  chart: '<path d="M4 20V4"/><path d="M4 20h16"/><path d="m7 15 4-4 3 3 5-6"/>',
+  handshake:
+    '<path d="m11 17 2 2a1.4 1.4 0 0 0 2-2"/><path d="m14 14 2.5 2.5a1.4 1.4 0 0 0 2-2L14 10l-2 2a1.4 1.4 0 0 1-2-2l3-3h3l4 4"/><path d="M3 11l4-4h3"/><path d="m7 15 2 2"/>',
+  target: '<circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="4"/><path d="m12 12 7-7M16 5h3v3"/>',
+  play: '<circle cx="12" cy="12" r="9"/><path d="m10 8 6 4-6 4Z"/>',
+};
+const body = paths[name] ?? paths.play;
+---
+
+<svg
+  width={size}
+  height={size}
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.7"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  aria-hidden="true"
+  set:html={body}
+/>

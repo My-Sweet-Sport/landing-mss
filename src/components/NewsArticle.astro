@@ -1,0 +1,91 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import { t, rich, ui, url, routes, newsPath, formatDate, type Lang } from '../lib/i18n';
+
+interface Props {
+  entry: CollectionEntry<'news'>;
+  lang: Lang;
+}
+const { entry, lang } = Astro.props;
+const n = entry.data;
+const s = ui[lang];
+const other: Lang = lang === 'fr' ? 'en' : 'fr';
+const title = t(n.title, lang);
+---
+
+<Base
+  lang={lang}
+  title={title}
+  description={t(n.summary, lang)}
+  altHref={newsPath(entry.id, other)}
+  image={n.image ? url(n.image) : null}
+>
+  <article class="wrap article">
+    <a class="back" href={url(routes.news[lang])}>{s.newsBack}</a>
+    <p class="meta">
+      <time datetime={n.date.toISOString().slice(0, 10)}>{formatDate(n.date, lang)}</time>
+      <span class="cat">{s.categories[n.category]}</span>
+    </p>
+    <h1>{title}</h1>
+    {t(n.summary, lang) && <p class="summary">{t(n.summary, lang)}</p>}
+    {n.image && <img class="cover" src={url(n.image)} alt="" />}
+    <div class="prose" set:html={rich(n.body, lang)} />
+    {
+      n.link && (
+        <p class="ext">
+          <a class="btn btn-ghost" href={n.link} rel="noopener">
+            {s.externalLink}
+          </a>
+        </p>
+      )
+    }
+  </article>
+</Base>
+
+<style>
+  .article {
+    max-width: 50rem;
+    padding-block: clamp(2.5rem, 6vw, 4rem) clamp(4rem, 9vw, 7rem);
+  }
+  .back {
+    color: var(--muted);
+    font-size: var(--step--1);
+    text-underline-offset: 4px;
+  }
+  .back:hover {
+    color: var(--line);
+  }
+  .meta {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+    color: var(--muted);
+    font-size: var(--step--1);
+  }
+  .cat {
+    color: var(--green);
+    font-weight: 600;
+  }
+  h1 {
+    font-size: var(--step-3);
+    margin-top: 0.75rem;
+  }
+  .summary {
+    margin-top: 1.25rem;
+    font-size: var(--step-1);
+    color: var(--line);
+    line-height: 1.5;
+  }
+  .cover {
+    width: 100%;
+    margin-top: 2rem;
+    border-radius: 14px;
+  }
+  .prose {
+    margin-top: 2rem;
+  }
+  .ext {
+    margin-top: 2.5rem;
+  }
+</style>
