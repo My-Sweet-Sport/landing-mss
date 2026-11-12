@@ -1,50 +1,45 @@
 name: Deploy to GitHub Pages
 
 on:
-  workflow_dispatch:
   push:
-    branches:
-      - main # Set a branch to deploy from
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
 
 jobs:
-  build_site:
+  build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Install Node.js
-        uses: actions/setup-node@v4
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
         with:
-          node-version: 24
-
-      - name: Install dependencies
-        run: npm i
-
-      - name: build
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run build
         env:
-          BASE_PATH: "/${{ github.event.repository.name }}"
-        run: npm run build
-
-      - name: Upload Artifacts
-        uses: actions/upload-pages-artifact@v3
+          # Leave BASE_PATH as "/" when the site is served from mysweetsport.com.
+          # Set it to "/landing-mss" only to preview on the github.io URL.
+          SITE_URL: https://mysweetsport.com
+          BASE_PATH: /
+      - uses: actions/upload-pages-artifact@v3
         with:
-          # this should match the `pages` option in your adapter-static options
-          path: "build/"
+          path: dist
 
   deploy:
-    needs: build_site
+    needs: build
     runs-on: ubuntu-latest
-
-    permissions:
-      pages: write
-      id-token: write
-
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-
     steps:
-      - name: Deploy
-        id: deployment
+      - id: deployment
         uses: actions/deploy-pages@v4

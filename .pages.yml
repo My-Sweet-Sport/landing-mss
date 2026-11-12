@@ -1,0 +1,453 @@
+# Pages CMS configuration — https://pagescms.org
+# Sign in at https://app.pagescms.org with GitHub and open this repository.
+# Every save is a commit to `main`, which redeploys the site in about a minute.
+#
+# Text fields come in pairs (fr / en). If one is left empty, the site shows the
+# other language instead. Field shapes must stay in sync with
+# src/content.config.ts.
+
+media:
+  input: public/uploads
+  output: /uploads
+content:
+- name: news
+  label: Nouvelles / News
+  type: collection
+  path: src/content/news
+  format: json
+  filename: '{year}-{month}-{day}-{fields.slug}.json'
+  view:
+    fields:
+    - title.fr
+    - date
+    - category
+    - draft
+    primary: title.fr
+    sort:
+    - date
+    default:
+      sort: date
+      order: desc
+  fields:
+  - type: object
+    fields:
+    - name: fr
+      label: Français
+      type: string
+    - name: en
+      label: English
+      type: string
+    name: title
+    label: Titre / Title
+    required: true
+  - name: slug
+    label: Adresse (URL) / URL slug
+    type: string
+    required: true
+    description: Mots courts séparés par des tirets, ex. entente-volleyball-quebec. Sert au nom de fichier et à l’adresse
+      de la page.
+  - name: date
+    label: Date
+    type: date
+    required: true
+  - name: category
+    label: Catégorie / Category
+    type: select
+    default: partnership
+    options:
+      values:
+      - value: partnership
+        label: Partenariat / Partnership
+      - value: product
+        label: Produit / Product
+      - value: event
+        label: Événement / Event
+      - value: company
+        label: Entreprise / Company
+  - type: object
+    fields:
+    - name: fr
+      label: Français
+      type: text
+    - name: en
+      label: English
+      type: text
+    name: summary
+    label: Résumé / Summary
+  - type: object
+    fields:
+    - name: fr
+      label: Français
+      type: rich-text
+    - name: en
+      label: English
+      type: rich-text
+    name: body
+    label: Texte / Body
+  - name: image
+    label: Image
+    type: image
+  - name: link
+    label: Lien externe / External link
+    type: string
+    description: 'Optionnel : communiqué, article de presse…'
+  - name: draft
+    label: Brouillon (caché) / Draft (hidden)
+    type: boolean
+    default: false
+- name: clients
+  label: Clients
+  type: collection
+  path: src/content/clients
+  format: json
+  filename: '{primary}.json'
+  view:
+    fields:
+    - name
+    - order
+    - visible
+    primary: name
+    default:
+      sort: order
+      order: asc
+  fields:
+  - name: name
+    label: Nom / Name
+    type: string
+    required: true
+  - name: logo
+    label: Logo
+    type: image
+    description: PNG ou SVG, fond transparent. Sans logo, le nom est affiché.
+  - name: url
+    label: Site web / Website
+    type: string
+  - name: order
+    label: Ordre / Order
+    type: number
+    default: 0
+  - name: visible
+    label: Visible
+    type: boolean
+    default: true
+- name: products
+  label: Produits / Products
+  type: collection
+  path: src/content/products
+  format: json
+  filename: '{primary}.json'
+  view:
+    fields:
+    - name
+    - order
+    primary: name
+    default:
+      sort: order
+      order: asc
+  fields:
+  - name: name
+    label: Nom / Name
+    type: string
+    required: true
+  - name: url
+    label: Lien du produit / Product URL
+    type: string
+    required: true
+  - name: icon
+    label: Icône / Icon
+    type: image
+  - name: order
+    label: Ordre / Order
+    type: number
+    default: 0
+  - type: object
+    fields:
+    - name: fr
+      label: Français
+      type: string
+    - name: en
+      label: English
+      type: string
+    name: audience
+    label: Pour qui / Audience
+  - type: object
+    fields:
+    - name: fr
+      label: Français
+      type: string
+    - name: en
+      label: English
+      type: string
+    name: tagline
+    label: Accroche / Tagline
+  - type: object
+    fields:
+    - name: fr
+      label: Français
+      type: text
+    - name: en
+      label: English
+      type: text
+    name: description
+    label: Description
+  - type: object
+    fields:
+    - name: fr
+      label: Français
+      type: string
+    - name: en
+      label: English
+      type: string
+    name: features
+    label: Points clés / Features
+    list: true
+  - type: object
+    fields:
+    - name: fr
+      label: Français
+      type: string
+    - name: en
+      label: English
+      type: string
+    name: cta
+    label: Texte du bouton / Button label
+- name: home
+  label: Page d'accueil / Home page
+  type: file
+  path: src/content/settings/home.json
+  format: json
+  fields:
+  - name: hero
+    label: En-tête / Hero
+    type: object
+    fields:
+    - type: object
+      fields:
+      - name: fr
+        label: Français
+        type: text
+      - name: en
+        label: English
+        type: text
+      name: title
+      label: Titre / Title
+    - type: object
+      fields:
+      - name: fr
+        label: Français
+        type: text
+      - name: en
+        label: English
+        type: text
+      name: subtitle
+      label: Sous-titre / Subtitle
+    - type: object
+      fields:
+      - name: fr
+        label: Français
+        type: string
+      - name: en
+        label: English
+        type: string
+      name: primaryCta
+      label: Bouton principal / Primary button
+    - type: object
+      fields:
+      - name: fr
+        label: Français
+        type: string
+      - name: en
+        label: English
+        type: string
+      name: secondaryCta
+      label: Bouton démo / Demo button
+  - name: about
+    label: Qui sommes-nous / About
+    type: object
+    fields:
+    - type: object
+      fields:
+      - name: fr
+        label: Français
+        type: string
+      - name: en
+        label: English
+        type: string
+      name: title
+      label: Titre / Title
+    - type: object
+      fields:
+      - name: fr
+        label: Français
+        type: rich-text
+      - name: en
+        label: English
+        type: rich-text
+      name: body
+      label: Texte / Body
+    - name: facts
+      label: Chiffres clés / Key figures (optionnel)
+      type: object
+      list: true
+      fields:
+      - name: value
+        label: Valeur / Value
+        type: string
+      - type: object
+        fields:
+        - name: fr
+          label: Français
+          type: string
+        - name: en
+          label: English
+          type: string
+        name: label
+        label: Libellé / Label
+  - name: solutions
+    label: Solutions
+    type: object
+    fields:
+    - type: object
+      fields:
+      - name: fr
+        label: Français
+        type: string
+      - name: en
+        label: English
+        type: string
+      name: title
+      label: Titre / Title
+    - type: object
+      fields:
+      - name: fr
+        label: Français
+        type: text
+      - name: en
+        label: English
+        type: text
+      name: intro
+      label: Introduction
+    - name: items
+      label: Solutions
+      type: object
+      list: true
+      fields:
+      - name: icon
+        label: Icône / Icon
+        type: select
+        options:
+          values:
+          - brain
+          - users
+          - video
+          - chart
+          - handshake
+          - target
+          - play
+      - type: object
+        fields:
+        - name: fr
+          label: Français
+          type: string
+        - name: en
+          label: English
+          type: string
+        name: title
+        label: Titre / Title
+      - type: object
+        fields:
+        - name: fr
+          label: Français
+          type: text
+        - name: en
+          label: English
+          type: text
+        name: body
+        label: Texte / Body
+  - name: contact
+    label: Contact
+    type: object
+    fields:
+    - type: object
+      fields:
+      - name: fr
+        label: Français
+        type: string
+      - name: en
+        label: English
+        type: string
+      name: title
+      label: Titre / Title
+    - type: object
+      fields:
+      - name: fr
+        label: Français
+        type: text
+      - name: en
+        label: English
+        type: text
+      name: body
+      label: Texte / Body
+    - name: email
+      label: Courriel / Email
+      type: string
+    - name: demoUrl
+      label: Lien de réservation de démo / Demo booking URL
+      type: string
+  - name: social
+    label: Réseaux sociaux / Social
+    type: object
+    fields:
+    - name: linkedin
+      label: LinkedIn
+      type: string
+    - name: instagram
+      label: Instagram
+      type: string
+    - name: facebook
+      label: Facebook
+      type: string
+    - name: youtube
+      label: YouTube
+      type: string
+  - name: seo
+    label: Référencement / SEO
+    type: object
+    fields:
+    - type: object
+      fields:
+      - name: fr
+        label: Français
+        type: string
+      - name: en
+        label: English
+        type: string
+      name: title
+      label: Titre de la page / Page title
+    - type: object
+      fields:
+      - name: fr
+        label: Français
+        type: text
+      - name: en
+        label: English
+        type: text
+      name: description
+      label: Description
+- name: privacy
+  label: Politique de confidentialité / Privacy
+  type: file
+  path: src/content/pages/privacy.md
+  format: yaml-frontmatter
+  fields:
+  - name: title
+    label: Titre / Title
+    type: string
+  - name: updated
+    label: Dernière mise à jour / Last updated
+    type: string
+  - name: body
+    label: Texte / Body
+    type: rich-text
+    options:
+      format: markdown

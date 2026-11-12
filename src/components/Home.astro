@@ -1,0 +1,508 @@
+---
+import { getCollection, getEntry } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import Court from './Court.astro';
+import Icon from './Icon.astro';
+import NewsRow from './NewsRow.astro';
+import { t, rich, ui, url, routes, type Lang } from '../lib/i18n';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const s = ui[lang];
+const home = (await getEntry('settings', 'home'))!.data;
+const products = (await getCollection('products')).sort((a, b) => a.data.order - b.data.order);
+const news = (await getCollection('news', (e) => !e.data.draft))
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
+  .slice(0, 3);
+const clients = (await getCollection('clients', (e) => e.data.visible)).sort(
+  (a, b) => a.data.order - b.data.order || a.data.name.localeCompare(b.data.name),
+);
+const facts = home.about.facts ?? [];
+const other: Lang = lang === 'fr' ? 'en' : 'fr';
+---
+
+<Base lang={lang} altHref={routes.home[other]}>
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div class="hero-copy">
+        <h1>{t(home.hero.title, lang)}</h1>
+        <p class="lede">{t(home.hero.subtitle, lang)}</p>
+        <div class="actions">
+          <a class="btn btn-primary" href="#produits">{t(home.hero.primaryCta, lang)}</a>
+          {
+            home.contact.demoUrl && (
+              <a class="btn btn-ghost" href={home.contact.demoUrl} rel="noopener">
+                {t(home.hero.secondaryCta, lang)}
+              </a>
+            )
+          }
+        </div>
+      </div>
+      <div class="hero-court">
+        <Court label={s.courtLabel} />
+      </div>
+    </div>
+  </section>
+
+  <section class="about" aria-labelledby="about-title">
+    <div class="wrap about-grid">
+      <h2 id="about-title">{t(home.about.title, lang)}</h2>
+      <div>
+        <div class="prose about-body" set:html={rich(home.about.body, lang)} />
+        {
+          facts.length > 0 && (
+            <dl class="facts">
+              {facts.map((f) => (
+                <div>
+                  <dt>{t(f.label, lang)}</dt>
+                  <dd>{f.value}</dd>
+                </div>
+              ))}
+            </dl>
+          )
+        }
+      </div>
+    </div>
+  </section>
+
+  <section id="solutions" class="solutions" aria-labelledby="solutions-title">
+    <div class="wrap">
+      <header class="section-head">
+        <h2 id="solutions-title">{t(home.solutions.title, lang)}</h2>
+        <p>{t(home.solutions.intro, lang)}</p>
+      </header>
+      <ul class="solution-list">
+        {
+          home.solutions.items.map((item) => (
+            <li>
+              <span class="solution-icon">
+                <Icon name={item.icon} />
+              </span>
+              <h3>{t(item.title, lang)}</h3>
+              <p>{t(item.body, lang)}</p>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <section id="produits" class="products" aria-labelledby="products-title">
+    <div class="wrap">
+      <header class="section-head">
+        <h2 id="products-title">{s.productsTitle}</h2>
+        <p>{s.productsIntro}</p>
+      </header>
+      <div class="product-grid">
+        {
+          products.map(({ data: p }) => (
+            <article class="product">
+              <div class="product-top">
+                {p.icon && <img src={url(p.icon)} alt="" width="56" height="56" loading="lazy" />}
+                <div>
+                  <p class="audience">{t(p.audience, lang)}</p>
+                  <h3>{p.name}</h3>
+                </div>
+              </div>
+              <p class="tagline">{t(p.tagline, lang)}</p>
+              <p class="desc">{t(p.description, lang)}</p>
+              {p.features && p.features.length > 0 && (
+                <ul class="features">
+                  {p.features.map((f) => (
+                    <li>{t(f, lang)}</li>
+                  ))}
+                </ul>
+              )}
+              <a class="btn btn-primary product-cta" href={p.url} rel="noopener">
+                {t(p.cta, lang)}
+                <span class="visually-hidden">: {p.name}</span>
+              </a>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section id="nouvelles" class="news" aria-labelledby="news-title">
+    <div class="wrap">
+      <header class="section-head row">
+        <h2 id="news-title">{s.newsTitle}</h2>
+        <a class="all" href={url(routes.news[lang])}>{s.newsAll}</a>
+      </header>
+      {
+        news.length > 0 ? (
+          <ul class="news-list">
+            {news.map((n) => (
+              <NewsRow entry={n} lang={lang} />
+            ))}
+          </ul>
+        ) : (
+          <p class="empty">{s.newsEmpty}</p>
+        )
+      }
+    </div>
+  </section>
+
+  {
+    clients.length > 0 && (
+      <section id="clients" class="clients" aria-labelledby="clients-title">
+        <div class="wrap">
+          <h2 id="clients-title">{s.clientsTitle}</h2>
+          <ul class="logo-row">
+            {clients.map(({ data: c }) => {
+              const inner = c.logo ? (
+                <img src={url(c.logo)} alt={c.name} loading="lazy" />
+              ) : (
+                <span class="wordmark">{c.name}</span>
+              );
+              return <li>{c.url ? <a href={c.url} rel="noopener">{inner}</a> : inner}</li>;
+            })}
+          </ul>
+        </div>
+      </section>
+    )
+  }
+
+  <section id="contact" class="contact" aria-labelledby="contact-title">
+    <div class="wrap contact-grid">
+      <div>
+        <h2 id="contact-title">{t(home.contact.title, lang)}</h2>
+        <p>{t(home.contact.body, lang)}</p>
+      </div>
+      <div class="actions">
+        {
+          home.contact.demoUrl && (
+            <a class="btn btn-primary" href={home.contact.demoUrl} rel="noopener">
+              {s.bookDemo}
+            </a>
+          )
+        }
+        {
+          home.contact.email && (
+            <a class="btn btn-ghost" href={`mailto:${home.contact.email}`}>
+              {s.emailUs}
+            </a>
+          )
+        }
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+  }
+  section {
+    padding-block: clamp(4rem, 9vw, 7rem);
+  }
+  .section-head {
+    display: grid;
+    gap: 0.75rem;
+    max-width: 40rem;
+    margin-bottom: clamp(2rem, 5vw, 3.5rem);
+  }
+  .section-head p {
+    color: var(--muted);
+    font-size: var(--step-1);
+    line-height: 1.5;
+  }
+  .section-head.row {
+    max-width: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 1rem;
+  }
+  .all {
+    color: var(--green);
+    font-weight: 600;
+    text-underline-offset: 4px;
+  }
+
+  /* Hero */
+  .hero {
+    padding-block: clamp(3rem, 7vw, 6rem) clamp(3.5rem, 8vw, 6.5rem);
+    border-bottom: 1px solid var(--rule);
+  }
+  .hero-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.85fr);
+    gap: clamp(2rem, 6vw, 5rem);
+    align-items: center;
+  }
+  .hero h1 {
+    font-size: var(--step-4);
+    letter-spacing: -0.01em;
+    max-width: 14ch;
+  }
+  .lede {
+    margin-top: 1.5rem;
+    font-size: var(--step-1);
+    line-height: 1.5;
+    color: var(--muted);
+    max-width: 34rem;
+  }
+  .actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 2.25rem;
+  }
+  .hero-court {
+    max-width: 26rem;
+    justify-self: end;
+    width: 100%;
+  }
+  @media (max-width: 860px) {
+    .hero-grid {
+      grid-template-columns: 1fr;
+    }
+    .hero-court {
+      justify-self: start;
+      max-width: 20rem;
+    }
+  }
+
+  /* About */
+  .about-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+    gap: 2rem 4rem;
+  }
+  .about-body {
+    font-size: var(--step-1);
+    line-height: 1.55;
+  }
+  .facts {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem 3rem;
+    margin: 2.5rem 0 0;
+  }
+  .facts div {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+  .facts dd {
+    margin: 0;
+    font-family: var(--font-display);
+    font-stretch: 78%;
+    font-weight: 700;
+    font-size: var(--step-3);
+    color: var(--green);
+  }
+  .facts dt {
+    color: var(--muted);
+    font-size: var(--step--1);
+  }
+  @media (max-width: 760px) {
+    .about-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  /* Solutions */
+  .solutions {
+    background: var(--court-deep);
+  }
+  .solution-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+    gap: 2.5rem 2.5rem;
+  }
+  .solution-list li {
+    border-top: 2px solid var(--rule);
+    padding-top: 1.5rem;
+    display: grid;
+    gap: 0.75rem;
+    align-content: start;
+  }
+  .solution-icon {
+    color: var(--green);
+  }
+  .solution-list h3 {
+    font-size: var(--step-1);
+    font-stretch: 90%;
+  }
+  .solution-list p {
+    color: var(--muted);
+    font-size: 0.98rem;
+  }
+
+  /* Products */
+  .product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 22rem), 1fr));
+    gap: 1.5rem;
+  }
+  .product {
+    display: flex;
+    flex-direction: column;
+    gap: 1.1rem;
+    padding: clamp(1.5rem, 3.5vw, 2.5rem);
+    background: var(--court-raised);
+    border-radius: 18px;
+    border: 1px solid var(--rule);
+  }
+  .product-top {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+  }
+  .product-top img {
+    width: 56px;
+    height: 56px;
+    border-radius: 14px;
+  }
+  .audience {
+    color: var(--green);
+    font-size: var(--step--1);
+    font-weight: 600;
+  }
+  .product h3 {
+    font-size: var(--step-2);
+  }
+  .tagline {
+    font-family: var(--font-display);
+    font-stretch: 85%;
+    font-weight: 600;
+    font-size: var(--step-1);
+    line-height: 1.3;
+  }
+  .desc {
+    color: var(--muted);
+  }
+  .features {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 0.55rem;
+  }
+  .features li {
+    position: relative;
+    padding-left: 1.6rem;
+    font-size: 0.98rem;
+  }
+  .features li::before {
+    content: '';
+    position: absolute;
+    left: 0.15rem;
+    top: 0.42em;
+    width: 0.7rem;
+    height: 0.7rem;
+    border: 2.5px solid var(--green);
+    border-radius: 50%;
+  }
+  .product-cta {
+    margin-top: auto;
+    align-self: flex-start;
+  }
+
+  /* News */
+  .news {
+    border-top: 1px solid var(--rule);
+  }
+  .news-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .empty {
+    color: var(--muted);
+  }
+
+  /* Clients: a light band so any client's logo reads as designed */
+  .clients {
+    background: var(--paper);
+    color: var(--ink);
+    padding-block: clamp(3rem, 6vw, 4.5rem);
+  }
+  .clients h2 {
+    font-size: var(--step-2);
+    margin-bottom: 2rem;
+  }
+  .logo-row {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 2rem 3.5rem;
+  }
+  .logo-row a {
+    text-decoration: none;
+    display: block;
+  }
+  .logo-row img {
+    height: 56px;
+    width: auto;
+    max-width: 180px;
+    object-fit: contain;
+  }
+  .wordmark {
+    font-family: var(--font-display);
+    font-stretch: 85%;
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: var(--ink-muted);
+  }
+  .logo-row a:hover .wordmark {
+    color: var(--ink);
+  }
+
+  /* Contact */
+  .contact {
+    background: var(--green);
+    color: var(--green-ink);
+  }
+  .contact-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: end;
+    gap: 2rem;
+  }
+  .contact h2 {
+    font-size: var(--step-3);
+    max-width: 18ch;
+  }
+  .contact p {
+    margin-top: 1rem;
+    font-size: var(--step-1);
+    max-width: 34rem;
+  }
+  .contact .actions {
+    margin-top: 0;
+  }
+  .contact .btn-primary {
+    background: var(--court);
+    color: var(--line);
+  }
+  .contact .btn-primary:hover {
+    background: #000;
+  }
+  .contact .btn-ghost {
+    border-color: rgba(6, 33, 15, 0.35);
+    color: var(--green-ink);
+  }
+  .contact .btn-ghost:hover {
+    border-color: var(--green-ink);
+  }
+  .contact :focus-visible {
+    outline-color: var(--court);
+  }
+</style>

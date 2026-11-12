@@ -1,0 +1,51 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import NewsRow from './NewsRow.astro';
+import { ui, routes, type Lang } from '../lib/i18n';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const s = ui[lang];
+const other: Lang = lang === 'fr' ? 'en' : 'fr';
+const news = (await getCollection('news', (e) => !e.data.draft)).sort(
+  (a, b) => b.data.date.getTime() - a.data.date.getTime(),
+);
+---
+
+<Base lang={lang} title={s.newsTitle} altHref={routes.news[other]}>
+  <div class="wrap page">
+    <h1>{s.newsTitle}</h1>
+    {
+      news.length ? (
+        <ul>
+          {news.map((n) => (
+            <NewsRow entry={n} lang={lang} />
+          ))}
+        </ul>
+      ) : (
+        <p class="empty">{s.newsEmpty}</p>
+      )
+    }
+  </div>
+</Base>
+
+<style>
+  .page {
+    padding-block: clamp(3rem, 7vw, 5rem) clamp(4rem, 9vw, 7rem);
+  }
+  h1 {
+    font-size: var(--step-4);
+    margin-bottom: 2.5rem;
+  }
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .empty {
+    color: var(--muted);
+  }
+</style>

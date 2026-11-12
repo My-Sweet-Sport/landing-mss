@@ -1,0 +1,39 @@
+---
+import { getEntry, render } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import { ui } from '../lib/i18n';
+
+const page = (await getEntry('pages', 'privacy'))!;
+const { Content } = await render(page);
+---
+
+<Base lang="en" title={page.data.title} altHref="/">
+  <article class="wrap legal">
+    <p class="note" lang="fr">{ui.fr.privacyNote}</p>
+    <h1>{page.data.title}</h1>
+    {page.data.updated && <p class="updated">Last updated {page.data.updated}</p>}
+    <div class="prose">
+      <Content />
+    </div>
+  </article>
+</Base>
+
+<style>
+  .legal {
+    max-width: 50rem;
+    padding-block: clamp(2.5rem, 6vw, 4rem) clamp(4rem, 9vw, 7rem);
+  }
+  .note {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-bottom: 1.5rem;
+  }
+  h1 {
+    font-size: var(--step-3);
+  }
+  .updated {
+    color: var(--muted);
+    margin-top: 0.75rem;
+    margin-bottom: 2rem;
+  }
+</style>

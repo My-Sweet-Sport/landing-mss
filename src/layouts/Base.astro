@@ -1,0 +1,210 @@
+---
+import '../styles/global.css';
+import { getEntry } from 'astro:content';
+import { t, ui, url, routes, type Lang } from '../lib/i18n';
+
+interface Props {
+  lang: Lang;
+  title?: string;
+  description?: string;
+  /** Path of this page in the other language. */
+  altHref: string;
+  image?: string | null;
+}
+
+const { lang, title, description, altHref, image } = Astro.props;
+const settings = (await getEntry('settings', 'home'))!.data;
+const s = ui[lang];
+const other: Lang = lang === 'fr' ? 'en' : 'fr';
+const home = routes.home[lang];
+const pageTitle = title ? `${title} | MySweetSport` : t(settings.seo.title, lang);
+const pageDescription = description || t(settings.seo.description, lang);
+const canonical = new URL(Astro.url.pathname, Astro.site);
+const ogImage = new URL(image || url('/brand/logo-dark-bg.png'), Astro.site);
+const year = new Date().getFullYear();
+const social = Object.entries(settings.social ?? {}).filter(([, v]) => v);
+const socialLabels: Record<string, string> = {
+  linkedin: 'LinkedIn',
+  instagram: 'Instagram',
+  facebook: 'Facebook',
+  youtube: 'YouTube',
+};
+---
+
+<!doctype html>
+<html lang={lang === 'fr' ? 'fr-CA' : 'en-CA'}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{pageTitle}</title>
+    <meta name="description" content={pageDescription} />
+    <link rel="canonical" href={canonical} />
+    <link rel="alternate" hreflang={other === 'fr' ? 'fr-CA' : 'en-CA'} href={new URL(url(altHref), Astro.site)} />
+    <link rel="icon" href={url('/favicon.ico')} />
+    <link rel="apple-touch-icon" href={url('/apple-touch-icon.png')} />
+    <meta name="theme-color" content="#1b1a27" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="MySweetSport" />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={pageDescription} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:locale" content={lang === 'fr' ? 'fr_CA' : 'en_CA'} />
+    <link rel="sitemap" href={url('/sitemap-index.xml')} />
+  </head>
+  <body>
+    <a class="skip" href="#main">{s.skip}</a>
+    <header class="site-header">
+      <div class="wrap bar">
+        <a href={url(home)} class="brand" aria-label="MySweetSport">
+          <img src={url('/brand/logo-dark-bg.png')} alt="MySweetSport" width="158" height="45" />
+        </a>
+        <nav aria-label={lang === 'fr' ? 'Navigation principale' : 'Main navigation'}>
+          <ul>
+            <li><a href={url(`${home}#solutions`)}>{s.nav.solutions}</a></li>
+            <li><a href={url(`${home}#produits`)}>{s.nav.products}</a></li>
+            <li><a href={url(routes.news[lang])}>{s.nav.news}</a></li>
+            <li class="hide-sm"><a href={url(`${home}#contact`)}>{s.nav.contact}</a></li>
+          </ul>
+        </nav>
+        <a class="lang" href={url(altHref)} hreflang={other} lang={other} aria-label={s.switchLang}>
+          {s.switchLangCode}
+        </a>
+      </div>
+    </header>
+
+    <main id="main">
+      <slot />
+    </main>
+
+    <footer class="site-footer">
+      <div class="wrap foot">
+        <img src={url('/brand/logo-dark-bg.png')} alt="MySweetSport" width="140" height="40" loading="lazy" />
+        <ul class="foot-links">
+          <li><a href={url(routes.news[lang])}>{s.nav.news}</a></li>
+          <li><a href={url(routes.privacy[lang])}>{s.footer.privacy}</a></li>
+          <li><a href={url(routes.support[lang])}>{s.footer.support}</a></li>
+          {social.map(([k, v]) => (
+            <li><a href={v as string} rel="noopener">{socialLabels[k] ?? k}</a></li>
+          ))}
+        </ul>
+        <p class="copy">© {year} MySweetSport Inc. {s.footer.rights}</p>
+      </div>
+    </footer>
+  </body>
+</html>
+
+<style>
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: rgba(27, 26, 39, 0.88);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--rule);
+  }
+  .bar {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    min-height: 4.25rem;
+  }
+  .brand img {
+    width: 150px;
+    height: auto;
+  }
+  nav {
+    margin-left: auto;
+  }
+  nav ul {
+    display: flex;
+    gap: clamp(0.9rem, 2.4vw, 2rem);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  nav a,
+  .lang {
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--muted);
+  }
+  nav a:hover {
+    color: var(--line);
+  }
+  .lang {
+    border: 1.5px solid var(--rule);
+    border-radius: 999px;
+    padding: 0.3rem 0.75rem;
+    color: var(--line);
+  }
+  .lang:hover {
+    border-color: var(--green);
+  }
+  @media (max-width: 720px) {
+    .hide-sm {
+      display: none;
+    }
+    .brand img {
+      width: 118px;
+    }
+    .bar {
+      gap: 0.9rem;
+    }
+    nav a {
+      font-size: 0.875rem;
+    }
+  }
+  @media (max-width: 460px) {
+    nav ul li:first-child {
+      display: none;
+    }
+  }
+
+  .site-footer {
+    background: var(--court-deep);
+    border-top: 1px solid var(--rule);
+    padding-block: 3rem;
+  }
+  .foot {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 1.5rem 3rem;
+    align-items: center;
+  }
+  .foot img {
+    width: 130px;
+    height: auto;
+  }
+  .foot-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 0.5rem 1.75rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .foot-links a {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 0.95rem;
+  }
+  .foot-links a:hover {
+    color: var(--line);
+  }
+  .copy {
+    grid-column: 1 / -1;
+    color: var(--muted);
+    font-size: var(--step--1);
+  }
+  @media (max-width: 640px) {
+    .foot {
+      grid-template-columns: 1fr;
+    }
+    .foot-links {
+      justify-content: flex-start;
+    }
+  }
+</style>
