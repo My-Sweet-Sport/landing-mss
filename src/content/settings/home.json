@@ -46,10 +46,10 @@
       },
       {
         "icon": "users",
-        "title": { "fr": "Identification de talents", "en": "Talent identification" },
+        "title": { "fr": "Gestion des inscriptions", "en": "Registration management" },
         "body": {
-          "fr": "Inscriptions en ligne aux camps, paiement, consentement parental et dossiers d'athlètes réunis dans une seule console.",
-          "en": "Online camp registration, payment, parental consent and athlete records in a single console."
+          "fr": "Une plateforme simple pour gérer les inscriptions aux camps : paiement en ligne, consentement parental et dossiers d'athlètes, tout dans une seule console.",
+          "en": "A simple platform for camp registrations: online payment, parental consent and athlete records, all in one console."
         }
       },
       {
