@@ -61,14 +61,6 @@
         }
       },
       {
-        "icon": "video",
-        "title": { "fr": "Vidéo et analyse", "en": "Video and analysis" },
-        "body": {
-          "fr": "Découpage et montage de séquences de match pour l'entraînement, le recrutement et le partage.",
-          "en": "Cutting and editing match footage for training, recruiting and sharing."
-        }
-      },
-      {
         "icon": "chart",
         "title": { "fr": "Données de performance", "en": "Performance data" },
         "body": {
